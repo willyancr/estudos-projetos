@@ -1,11 +1,6 @@
 
-const res = document.querySelectorAll('body *')
+const res = document.querySelector('.menu')
+
+console.log(res.querySelector('li:last-child'))
 
 
-res.forEach(resultado => {
-    resultado.addEventListener('click', handleResultado)
-})
-
-function handleResultado(event){
-    //event.target.remove()
-}
