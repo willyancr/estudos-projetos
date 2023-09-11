@@ -208,6 +208,23 @@ body{
     display: block !important;
     animation: show .7s forwards;
 }
+.js-accordion-faq dt{
+    cursor: pointer;
+}
+.js-accordion-faq dt::after{
+    content: '⮯';
+    margin-left: 5px;
+}
+.js-accordion-faq dt.ativo::after{
+    content: '⮭';    
+}
+.js-accordion-faq dd{
+    display: none;
+}
+.js-accordion-faq dd.ativo{
+    display: block !important;
+    animation: slide .7s forwards;
+}
 
 @keyframes show{
     from{
@@ -219,4 +236,25 @@ body{
         transform: translate3d(0,0,0);
     }
     
+}
+@keyframes slide{
+    from{
+        opacity: 0;
+        max-height: 0;
+    }
+    to{
+        opacity: 1;
+        max-height: 200px;
+    }
+}
+
+.js-scroll{
+    opacity: 0;
+    transform: translate3d(-30px,0,0);
+    transition: .3s;
+}
+.js-scroll.ativo{
+    opacity: 1;
+    transform: translate3d(0,0,0);
+
 }
