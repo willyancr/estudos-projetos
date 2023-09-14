@@ -1,4 +1,4 @@
-
+// somar os valores 
 const transacao = [
     {
         descricao: 'Taxa do banco',
@@ -25,8 +25,8 @@ let taxaTotal = 0
 let recebimentoTotal = 0
 transacao.forEach(item => {
     const limparValor = Number(item.valor.replace('R$ ', ''))
-
-    if(item.descricao.slice(0, 4) === 'Taxa'){
+    const selecionarTaxa = item.descricao.slice(0,4)
+    if(selecionarTaxa === 'Taxa'){
         taxaTotal += limparValor
         
     }
@@ -50,7 +50,6 @@ let html = `<ul>
             `
 
 html = html.split('span').join('a')
-
 //console.log(html)
 
 //retornar o ultimo caractere da string
@@ -69,6 +68,5 @@ transacao2.forEach(item => {
         soma++
     }
 })
-
 //console.log(soma)
 
