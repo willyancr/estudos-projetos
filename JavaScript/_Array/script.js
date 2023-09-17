@@ -82,5 +82,5 @@ const carros2 = ['Ford','Fiat','GM','Honda']
 const cloneCarros2 = carros2.slice()
 const removeUltimoCarros2 = carros2.pop()
 
-console.log(carros2)
-console.log(cloneCarros2)
+// console.log(carros2)
+// console.log(cloneCarros2)
