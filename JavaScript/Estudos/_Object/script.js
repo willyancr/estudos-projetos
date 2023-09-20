@@ -22,3 +22,9 @@ Object.defineProperties(moto, {
     enumerable: true // tona enumerável
   }
 })
+
+//Object.freeze() - impede qualuqer mudança nas propiedades
+//Object.seal() - previne a adição de novas propriedades e impede que as atuais sejam deletadas
+//Object.preventExtensions() - previne a adição de novas propriedades
+
+//Object.prototype.toString.call() - saber se é uma função, string ou array

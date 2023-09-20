@@ -24,7 +24,7 @@ export function navTab(){
         }
     }
 }
-
+//navegação nos itens do FAQ
 export function navAccordion(){
 
     const titleFaq = document.querySelectorAll('.js-accordion-faq dt') 
@@ -49,13 +49,13 @@ export function navAccordion(){
         }
     }
 }
-
+//navegação do menu
 export function navScroll(){
 
     const linksInternos = document.querySelectorAll('.js-menu a[href^="#"]')
 
-    linksInternos.forEach(links => {
-        links.addEventListener('click', scrollToSelection)
+    linksInternos.forEach(link => {
+        link.addEventListener('click', scrollToSelection)
     })
 
     function scrollToSelection(event){
@@ -63,11 +63,13 @@ export function navScroll(){
         const href = event.currentTarget.getAttribute('href')
         const section = document.querySelector(href)
         
+        //scroll suave
         section.scrollIntoView({behavior: "smooth", block: 'start'})
 
     }
 }
 
+//efeitos dos titulos no scroll
 export function animationScroll(){
 
     const sections = document.querySelectorAll('.js-scroll')
