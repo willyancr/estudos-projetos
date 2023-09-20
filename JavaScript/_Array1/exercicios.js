@@ -16,7 +16,7 @@ const objetosCurso = arrayCurso.map(curso => {
 })
 // console.log(objetosCurso)
 
-//02 - Retorne uma lista com os números marios que 100
+//02 - Retorne uma lista com os números maiores que 100
 const numeros = [3, 44, 101, 125, 22, 54, 100]
 const maiores100 = numeros.filter(numero => numero > 100)
 //console.log(maiores100)

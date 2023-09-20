@@ -34,3 +34,43 @@ function encontrarValorMin(){
 // encontrarValorMin()
 
 //bind() - não irá executar a função, mas sim retornar a mesma com o novo contexto do this
+//Definindo um objeto que contém um método
+    const pessoa = {
+      nome: 'Maria',
+      saudacao: function() {
+        console.log(`Olá, ${this.nome}!`);
+      }
+    };
+
+    // Capturando o elemento do botão
+    const botao = document.getElementById('meuBotao');
+
+    // Vinculando a função de saudação ao contexto do objeto pessoa
+    const funcaoSaudacao = pessoa.saudacao.bind(pessoa);
+
+    // Adicionando um manipulador de evento de clique ao botão
+    botao.addEventListener('click', funcaoSaudacao);
+
+//EXERCICIOS
+//01 - Retorne a soma total de caracteres dos parágrafos acima utilzando reduce
+const paragrafo = document.querySelectorAll('p')
+const totalCaracteres = Array.prototype.reduce.call(paragrafo,(acumulador, caractere) => {
+  
+  return acumulador + caractere.innerText.length
+
+},0)
+// console.log(totalCaracteres)
+
+//02 - Crie uma função que retorne novos elementos html, com os seguintes parâmentros: tag, classe e conteúdo
+function createElemet(tag, classe, conteudo){
+  const elemento = document.createElement(tag)
+  classe ? elemento.classList.add(classe) : null
+  conteudo ? elemento.innerHTML = conteudo : null 
+  return elemento
+}
+// console.log(createElemet('div', 'ativo', 'teste'))
+
+//03 - Crie uma nova função utilizando a anterior como base. Essa nova função deverá criar um h1 com a classe titulo. Porém o parâmetro conteudo continuará dinamico 
+const h1 = createElemet.bind(null, 'h1', 'titulo')
+// console.log(h1('teste'))
+// console.log(h1('arroz'))
