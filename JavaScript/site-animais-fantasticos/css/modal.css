@@ -68,7 +68,8 @@
 }
 .modal input{
     width: 100%;
-    height: 3rem;
+    height: 4rem;
+    font-size: 1.6rem;
     border: .1rem solid rgba(0, 0, 0, 0.2);
     border-radius: .6rem .5rem;
     padding-left: 1rem;
