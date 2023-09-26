@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Playfair+Display+SC&display=swap');
+
+:root{
+    font-size: 62.5%;
+
+    --bg-body: #e6dfd5;
+    --bg-nav:#F79B07;
+    --cor-title: #161e25;
+    --cor-title2: #CC444B;
+
+    --font-nav: 'IBM Plex Sans', sans-serif;
+    --font-title: 'Playfair Display SC', georgia;
+    --font-text: Helvetica, Arial;
+}
+.button-menu{
+    display: none;
+}
+@media (max-width: 700px){
+    .button-menu{
+        display: block;
+        background-color: var(--cor-title);
+        color: var(--bg-body);
+        padding: 1rem;
+        margin: 1rem;
+        border-radius: .5rem;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        
+    }
+    .button-menu i{
+        transition: transform .3s;
+    }
+    .button-menu.active i{
+        transform: rotate(90deg);
+    }
+    #menu{
+        position: absolute;
+        display: none;
+        background: var(--bg-nav);
+        z-index: 200;
+        width: 16rem;
+        padding: 30px 0;
+        box-shadow: 2px 2px 2px 0 rgba(0,0,0,.3);
+    }
+    #menu.active{
+        display: block;
+        animation: show .3s forwards;
+    }
+    .dropdown-menu{
+        position: static;
+        border: none;
+    }
+}
