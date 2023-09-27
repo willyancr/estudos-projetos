@@ -16,6 +16,10 @@
     display: none;
 }
 @media (max-width: 700px){
+    [data-dropdown] a::after{
+        position: absolute;
+        content: ' ▼' ;
+    }
     .button-menu{
         display: block;
         background-color: var(--cor-title);
