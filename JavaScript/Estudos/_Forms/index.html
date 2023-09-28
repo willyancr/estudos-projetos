@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios</title>
+    <style>
+        body{
+            background-color: bisque;
+        }
+        form{
+            display: flex;
+            /* align-items: center; */
+            flex-direction: column;
+            justify-content: center;
+            width: 250px;
+            padding: 50px;
+            height: 80vh;
+            margin: 0 auto;
+        }
+        input, textarea{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        .invalido{
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <form>
+
+        <label for="nome" >Nome</label>
+        <input type="text">
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" required>
+        <span class="error"></span>
+        <label for="mensagem">Mensagem</label>
+        <textarea name="mensagem" id="mensagem" cols="30" rows="10"></textarea>
+
+    </form>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
+
