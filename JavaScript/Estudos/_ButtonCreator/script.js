@@ -2,7 +2,7 @@
 const controls = document.querySelector('.controls')
 const cssText = document.querySelector('.css')
 const btn = document.querySelector('.btn')
-
+let copyCssText = ''
 controls.addEventListener('change', handleChange)
 
 const handleStyle = {
@@ -66,4 +66,11 @@ setValues()
 
 function handleCssText(){
     cssText.innerHTML = '<span>' + btn.style.cssText.split('; ').join(';</span><span>')
+    copyCssText = btn.style.cssText
+}
+function copyCss(){
+    
+    navigator.clipboard.writeText(copyCssText).then(() => {
+        alert(' -- Código CSS copiado -- ')
+    })
 }

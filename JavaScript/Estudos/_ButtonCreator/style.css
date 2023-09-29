@@ -9,20 +9,32 @@ body{
     background-color: bisque;
     font-size: 16px;
 }
-input{
-    border-radius: 3px;
-    border: 1px solid rgb(190, 161, 125);
-}
 label{
     display: block;
     margin-bottom: .5rem;
+    margin-top: .5rem;
+}
+p{
+    font-family: 'Segoe UI';
     margin-top: 1rem;
+}
+input,select{
+    padding-left: .3rem;
+    height: 1.5rem;
+    border-radius: .3rem;
+    border: 1px solid rgb(190, 161, 125);
+}
+input[type=range] {
+    
 }
 .button-creator{
     display: grid;
     gap: 30px;
     grid-template-columns: 250px 1fr;
     padding: 30px;
+}
+.btn{
+    cursor: pointer;
 }
 .controls{
     font-family: 'Segoe UI';
@@ -33,7 +45,8 @@ label{
     box-shadow: 2px 2px 2px rgba(0,0,0,.3);
 }
 .css{
-    font-family: 'Segoe UI';
+    font-family: monospace;
+    font-weight: 600;
     margin: 40px;
     display: flex;   
     flex-direction: column;
@@ -42,3 +55,4 @@ label{
     display: block;
     margin-bottom: .5rem;
 }
+
