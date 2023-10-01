@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Senha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="form">
+
+            <h1>Gerador de Senha</h1>
+
+            <form>
+                <div class="tamanho">
+                    <label for="tamanho">Tamanho <span>(max: 20)</span></label>
+                    <input type="number" name="tamanho" id="tamanho">
+                </div>
+
+                <input class="range" type="range" name="tamanho" id="tamanho" min="0" max="20">
+                <div class="check">
+                    <input type="checkbox" name="numeros" id="numeros">
+                    <label for="numeros">Números <span>(0-9)</span></label>
+                </div>
+                <div class="check">
+                    <input type="checkbox" name="letrasMinusculas" id="letrasMinusculas">
+                    <label for="letrasMinusculas">Letras Minúscula <span>(a-z)</span></label>
+                </div>
+                <div class="check">
+                    <input type="checkbox" name="letrasMaiúscula" id="letrasMaiúscula">
+                    <label for="letrasMaiúscula">Letras Maiúscula <span>(A-Z)</span></label>
+                </div>
+                <div class="check">
+                    <input type="checkbox" name="caracteresEspecial" id="caracteresEspecial">
+                    <label for="caracteresEspecial">Caracteres Especial <span>(0-9)</span></label>
+                </div>
+
+                <button class="btn">Gerar</button>
+                <div class="senha-gerada">
+                    <span>Clique no botão para gerar.</span>
+                </div>
+            </form>
+        </div>
+        <div class="img-illustration">
+            <img src="image/projeto1.svg" alt="">
+        </div>
+    </div>
+</body>
+</html>
