@@ -5,25 +5,24 @@ const numeros = document.querySelector('#numeros')
 const letrasMinusculas = document.querySelector('#letrasMinusculas')
 const letrasMaiuscula = document.querySelector('#letrasMaiuscula')
 const caracteresEspecial = document.querySelector('#caracteresEspecial')
-const gerar = document.querySelector('.btn')
+const btnGerar = document.querySelector('.btn')
 const senhaGerada = document.querySelector('.senha-gerada span')
-
+const divSenha = document.querySelector('.senha-gerada')
+let senha = ''
 
 inputTamanho.addEventListener('input', () => {
-
     const value = inputTamanho.value
     inputTamanho.value = value
     inputRange.value = value
 })
 
 inputRange.addEventListener('input', () => {
-    
     const value = inputRange.value
     inputTamanho.value = value
     inputRange.value = value
 })
 
-gerar.addEventListener('click', handleGerar)
+btnGerar.addEventListener('click', handleGerar)
 
 function handleGerar(event){
     event.preventDefault()
@@ -47,10 +46,17 @@ function handleGerar(event){
         return
     }
     
-    let senha = ''
+    senha = ''
     for(let i = 0; i < inputTamanho.value; i++){
         const indiceAleatorio = Math.floor(Math.random() * caracateresPermetido.length)
         senha += caracateresPermetido.charAt(indiceAleatorio)
     }
+    
     senhaGerada.innerHTML = senha 
+    divSenha.classList.add('ativo')
+}
+function copiarSenha(){
+    navigator.clipboard.writeText(senha).then(() => {
+        alert('--> Senha copiada! <--')
+    })
 }
