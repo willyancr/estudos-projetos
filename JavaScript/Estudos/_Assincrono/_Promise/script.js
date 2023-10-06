@@ -41,6 +41,29 @@ lerArquivo(nomeDoArquivo)
     // console.error(`Erro ao ler o arquivo ${nomeDoArquivo}: ${erro}`)
 })
 
+//exemplo
+function contagemRegressiva(tempo){
+
+    return new Promise((resolve) => {
+        let numero = tempo
+        const intervalo = setInterval(() => {
+            console.log(numero)
+            numero--
+            if(numero === 0){
+                clearInterval(intervalo)
+                resolve('A contagem zerou')
+            }
+        }, 300);
+    })
+}
+const tempoContagem = 5
+
+contagemRegressiva(tempoContagem)
+.then(contagem => {
+    console.log(contagem)
+})
+
+
 //Promise.all() -  é uma função importante em JavaScript para lidar com várias promessas de maneira eficiente. Ela é usada quando você tem um conjunto de promessas e deseja esperar que todas elas sejam resolvidas ou que pelo menos uma delas seja rejeitada antes de continuar com o código.
 
 const imageUrls = [
@@ -69,5 +92,23 @@ Promise.all(imageUrls.map(loadImg))
     })
 })
 .catch(erro => {
-   console.log(erro)
+//    console.log(erro)
+})
+
+//exemplo
+const login = new Promise(resolve => {
+    setTimeout(() => {
+        resolve('Login Efetuado')
+    }, 1000);
+})
+
+const dados = new Promise(resolve => {
+    setTimeout(() => {
+        resolve('Dados efetuado')
+    }, 1500);
+})
+
+Promise.all([login,dados])
+.then((resolvido) => {
+    console.log(resolvido)
 })
