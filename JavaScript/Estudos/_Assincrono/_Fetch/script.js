@@ -24,7 +24,7 @@ async function buscaCEP(){
     const cep = inputCEP.value
     const dadosCEP = await fetch(`https://viacep.com.br/ws/${cep}/json/`)
     .then(dados => dados.json())
-    console.log(dadosCEP)
+    
     handleDados(dadosCEP)
 }
 function handleDados(dadosCEP){
@@ -36,19 +36,35 @@ function handleDados(dadosCEP){
     document.querySelector('.ddd').innerHTML = 'DDD: '+dadosCEP.ddd
 }
 
-//
-valorBitcoin()
+//API valor do Bitcoin
+const dadosBitcoin = fetch('https://blockchain.info/ticker')
+dadosBitcoin.then(dados => dados.json())
+.then(dados => {
+    handleBitcoin(dados.BRL)
+})  
 
-function valorBitcoin(){
-
-    const dadosBitcoin = fetch('https://blockchain.info/ticker')
-    dadosBitcoin.then(dados => dados.json())
-    .then(dados => {
-        handleBitcoin(dados.BRL)
-        console.log(dados)
-    })  
-}
 function handleBitcoin(dadosBRL){
+    
     const bitcoinElement = document.querySelector('.bitcoin')  
     bitcoinElement.innerHTML = `O valor do Bitcoin em BRL: ${dadosBRL['15m']}`   
 }
+
+//API gerar piada randomica
+const btnPiada = document.querySelector('.btnProximaPiada')
+btnPiada.addEventListener('click', handleBtnProxima)
+
+function apiPiada(){
+
+    const dadosPiada = fetch('https://api.chucknorris.io/jokes/random')
+    dadosPiada.then(dados => dados.json())
+    .then(dados => {
+        atualizarPiada(dados)
+    })
+}
+function atualizarPiada(dadosPiada){
+    document.querySelector('.piada').innerHTML = dadosPiada.value
+}
+function handleBtnProxima(){
+    apiPiada()
+}
+
