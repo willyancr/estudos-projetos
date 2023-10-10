@@ -3,7 +3,6 @@
 //API busca CEP
 const inputCEP = document.querySelector('input')
 const btn = document.querySelector('.btn')
-const endereco = document.querySelector('.endereco')
 
 btn.addEventListener('click', handleBtn)
 
@@ -44,7 +43,6 @@ dadosBitcoin.then(dados => dados.json())
 })  
 
 function handleBitcoin(dadosBRL){
-    
     const bitcoinElement = document.querySelector('.bitcoin')  
     bitcoinElement.innerHTML = `O valor do Bitcoin em BRL: ${dadosBRL['15m']}`   
 }
