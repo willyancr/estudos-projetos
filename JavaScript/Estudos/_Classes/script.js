@@ -76,3 +76,4 @@ console.log(pessoa.nome)
 pessoa.nome = 'Maria'
 console.log(pessoa.nome)
 pessoa.nome = 123
+
