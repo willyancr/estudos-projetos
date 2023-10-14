@@ -17,9 +17,9 @@ console.log(celular1)
 //exemplo sistema de gerenciamento de estoque
 function criarProduto(nome, preco, estoque){
   return {
-      nome: nome,
-      preco: preco,
-      estoque: estoque,
+      nome,
+      preco, 
+      estoque,
       descricao: function() {
           console.log(`Produto: ${this.nome}, Preço: R$ ${this.preco}, Estoque: ${this.estoque}`)
       },
