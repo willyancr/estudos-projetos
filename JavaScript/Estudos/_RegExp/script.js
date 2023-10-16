@@ -14,4 +14,12 @@ const cpfNovo = cpf.replace(regex, '')
 console.log(cpfNovo)
 
 //Um ou outro - combine cacacteres literais com uma classe para buscarmos variações: ju[nl]ho busca 'Julho' ou 'Junho'
-//De A a Z - /[A-Z]/ ou de 0 a 9: /[0-9]/
+//De A a Z - /[A-Z]/g ou de 0 a 9: /[0-9]/g
+//Negar - /[^a]/g - negando todas as letras 'a'
+//Escapar Especiais - '\' - '/\./': procura todos os pontos
+//Word - /\w/ - seleciona qualuqer caracter alfunumérico e o underline
+//Digitdos - /\d/ - seleciona os digitos
+
+//Validar CEP
+const cep = '77022-022'
+const regexCEP = /\d{5}[\s-]?\d{3}/g
