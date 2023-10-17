@@ -8,11 +8,6 @@ console.log(fraseNova)
 //Flag: i (/Aa/i)- irá buscar por todos os A e a
 //Character Class: /[ab]/ - irá procurar por 'a' ou 'b'
 //Character Class: /[-.]/ - irá procurar por '-' ou '.'
-const cpf = '019.338.591-05'
-const regex = /[-.]/g
-const cpfNovo = cpf.replace(regex, '')
-console.log(cpfNovo)
-
 //Um ou outro - combine cacacteres literais com uma classe para buscarmos variações: ju[nl]ho busca 'Julho' ou 'Junho'
 //De A a Z - /[A-Z]/g ou de 0 a 9: /[0-9]/g
 //Negar - /[^a]/g - negando todas as letras 'a'
@@ -21,5 +16,31 @@ console.log(cpfNovo)
 //Digitdos - /\d/ - seleciona os digitos
 
 //Validar CEP
-const cep = '77022-022'
-const regexCEP = /\d{5}[\s-]?\d{3}/g
+const cep = '77222-022'
+const regexCEP = /^\d{5}[\s-]?\d{3}$/g
+if(regexCEP.exec(cep)){
+    console.log('CEP válido')
+}else{
+    console.log('CEP invalido')
+}
+
+//Validar CPF - refatorado
+const cpf = '019-338-521-05'
+const regexCPF = /^\d{3}[-.]?\d{3}[-.]?\d{3}[-.]?\d{2}$/g
+
+console.log(regexCPF.test(cpf) ? 'CPF valido' : 'CPF invalido') 
+
+//Validade telefone
+const telefone = '(11) 22999-8999'
+const regexTelefone = /(\(?\d{2}\)?\s?)?(\d{4,5}[\s-.]?\d{4}$)/
+
+console.log(regexTelefone.test(telefone)? 'Telefone valido' : 'Telefone invalido')
+
+//Validar email
+const email = 'willyancr@gmail.com'
+// const regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+const regexEmail = /[\w.-]+@[\w.-]+\.[\w.-]+/gi
+console.log(regexEmail.test(email)? 'Email valido' : 'Email invalido')
+
+//
