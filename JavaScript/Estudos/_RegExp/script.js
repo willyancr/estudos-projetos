@@ -26,7 +26,7 @@ if(regexCEP.exec(cep)){
 
 //Validar CPF - refatorado
 const cpf = '019-338-521-05'
-const regexCPF = /^\d{3}[-.]?\d{3}[-.]?\d{3}[-.]?\d{2}$/g
+const regexCPF = /\d{3}[-.]?\d{3}[-.]?\d{3}[-.]?\d{2}/g
 
 console.log(regexCPF.test(cpf) ? 'CPF valido' : 'CPF invalido') 
 
