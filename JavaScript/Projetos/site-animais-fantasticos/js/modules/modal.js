@@ -1,4 +1,4 @@
-
+//login
 export default function initModal(){
 
     const btnAbrir = document.querySelector('[data-modal="abrir"]')
