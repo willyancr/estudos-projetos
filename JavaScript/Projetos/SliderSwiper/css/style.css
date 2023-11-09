@@ -1,0 +1,34 @@
+body{
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.swiper {
+    width: 800px;
+    height: 400px;
+}
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+}
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+/* img{
+    width: 800px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 5px;
+}  */
+.swiper-button-prev, .swiper-button-next{
+    color: antiquewhite;
+}
+.swiper-scrollbar{
+    background-color: rgba(250, 235, 215, 0.685);
+}
