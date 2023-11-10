@@ -1,3 +1,4 @@
+
 const swiper = new Swiper(".mySwiper", {
     loop: true,
     spaceBetween: 10,
@@ -8,7 +9,7 @@ const swiper = new Swiper(".mySwiper", {
 
 
 const swiper2 = new Swiper('.mySwiper2', {
-    loop: true,
+    // loop: true,
       spaceBetween: 10,
       navigation: {
         nextEl: ".swiper-button-next",

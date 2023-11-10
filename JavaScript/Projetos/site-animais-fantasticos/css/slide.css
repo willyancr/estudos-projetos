@@ -1,12 +1,10 @@
-body{
-    margin: 30px;
-    padding: 0;
-}
+
 .swiper {
     /* min-width: 100px; */
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    grid-column: 1 / 4;
 }
 .swiper-slide {
     text-align: center;
@@ -25,17 +23,17 @@ body{
     object-fit: cover;
     border-radius: 5px;
 }
-/* .mySwiper2 {
-    max-height: 40%;
-    max-width: 60%;
-} */
+.mySwiper2 {
+    height: 600px;
+    max-width: 800px;
+}
 .mySwiper {
     height: 80px;
     width: 270px;
     box-sizing: border-box;
     padding: 10px 0;
+    /* overflow: inherit; */
 }
-
 .mySwiper .swiper-slide {
     width: 40px;
     opacity: 0.5;

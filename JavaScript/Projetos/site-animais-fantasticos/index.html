@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- Links -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animais Fantásticos</title>
-
+    
     <link rel="stylesheet" href="css/style.css">
+    
 </head>
 <body>
     <div class="grid-container">
@@ -16,6 +19,7 @@
             <ul class="list-menu" id="menu">
                 <li><a href="#animais">ANIMAIS</a></li>
                 <li><a href="#faq">FAQ</a></li>
+                <li><a href="#galeria">GALERIA</a></li>
                 <li><a href="#contato">CONTATO</a></li>
                 <li data-dropdown>
                     <a href="sobre.html">SOBRE</a>
@@ -98,6 +102,42 @@
         
         </section>
         
+        <section class="grid-section galeria js-scroll" id="galeria">
+            <h1 class="title">GALERIA</h1>
+            <div thumbsSlider="" class="swiper mySwiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="img/imagem1.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="img/imagem2.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="img/imagem3.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="img/imagem4.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="img/imagem5.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="img/imagem6.jpg" alt=""></div>
+                
+                </div>
+                
+            </div>
+            <div class="swiper mySwiper2">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="img/imagem1.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="img/imagem2.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="img/imagem3.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="img/imagem4.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="img/imagem5.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="img/imagem6.jpg" alt=""></div>
+                
+                </div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            
+            </div>
+            
+        </section>
+
         <section class="grid-section contato js-scroll" id="contato">
             <h1 class="title">Contato</h1>
         
@@ -130,7 +170,8 @@
             </form>
         </div>
     </section>
-    <script src="main.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/script.js" type="module"></script>
     
 </body>
 </html>
