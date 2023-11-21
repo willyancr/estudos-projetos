@@ -1,17 +1,19 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import Forms from './Forms/Forms';
-import Titulo from './Propiedades/Props';
+import Header from './Desafio/Header';
+import Produtos from './Desafio/Produtos';
+import Home from './Desafio/Home';
 
 const App = () => {
+  const { pathname } = window.location;
+  let Pagina = Home;
+  if (pathname === '/produtos') {
+    Pagina = Produtos;
+  }
+
   return (
     <div>
-      <Titulo texto='Meu primeito Titulo' />
-      
-      {/* {<Header />
-      <Forms />
-      <Footer />} */}
+      <Header />
+      <Pagina />
     </div>
   );
 };
