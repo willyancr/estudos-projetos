@@ -1,5 +1,5 @@
 import React from 'react';
-import Produtos from './ListaDinamica/Produtos';
+import Produtos from './Produtos';
 
 const App = () => {
   const [produtos, setProdutos] = React.useState([
@@ -18,32 +18,31 @@ const App = () => {
         id: Math.random(),
         marca: 'Apple',
         modelo: 'Iphone 15 Pro Max',
-        preco: Math.random() * 10000,
+        preco: 11200,
       },
     ]);
   }
 
-  function handleRemove(id) {
-    setProdutos(produtos.filter((produto) => produto.id !== id));
+  function handleRemove() {
+    const removeProduto = [...produtos];
+    removeProduto.pop();
+    setProdutos(removeProduto);
   }
 
   return (
     <>
-      <h1>Produtos</h1>
-      <button onClick={handleAdd} style={{ marginRight: '10px' }}>
-        Adicionar
-      </button>
-      <hr />
       {produtos.map((produto) => (
         <Produtos
           key={produto.id}
-          id={produto.id}
           marca={produto.marca}
           modelo={produto.modelo}
           preco={produto.preco}
-          onRemove={handleRemove}
         />
       ))}
+      <button onClick={handleAdd} style={{ marginRight: '10px' }}>
+        Adicionar
+      </button>
+      <button onClick={handleRemove}>Remover</button>
     </>
   );
 };
