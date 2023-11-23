@@ -2,28 +2,47 @@ import React from 'react';
 import Produtos from './Produtos';
 
 const App = () => {
-  const [produto, setProduto] = React.useState(null);
+  const [produtos, setProdutos] = React.useState([
+    {
+      id: Math.random(),
+      marca: 'Samsung',
+      modelo: 'S23 Ultra',
+      preco: 8500,
+    },
+  ]);
 
-  React.useEffect(() => {
-    const produtoLocal = window.localStorage.getItem('produto');
-    if (produtoLocal !== null) setProduto(produtoLocal);
-  }, []);
-
-  React.useEffect(() => {
-    if (produto !== null) window.localStorage.setItem('produto', produto);
-  }, [produto]);
-
-  async function handleClick({ target }) {
-    setProduto(target.innerText);
+  function handleAdd() {
+    setProdutos([
+      ...produtos,
+      {
+        id: Math.random(),
+        marca: 'Apple',
+        modelo: 'Iphone 15 Pro Max',
+        preco: 11200,
+      },
+    ]);
   }
+
+  function handleRemove() {
+    const removeProdutos = [...produtos];
+    removeProdutos.pop();
+    setProdutos(removeProdutos);
+  }
+
   return (
     <>
-      <h2>Preferência: {produto}</h2>
-      <button onClick={handleClick} style={{ marginRight: '10px' }}>
-        Notebook
+      {produtos.map((produto) => (
+        <Produtos
+          key={produto.id}
+          marca={produto.marca}
+          modelo={produto.modelo}
+          preco={produto.preco}
+        />
+      ))}
+      <button onClick={handleAdd} style={{ marginRight: '10px' }}>
+        Adicionar
       </button>
-      <button onClick={handleClick}>Smartphone</button>
-      <Produtos produto={produto} />
+      <button onClick={handleRemove}>Remover</button>
     </>
   );
 };
