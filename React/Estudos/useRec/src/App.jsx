@@ -1,5 +1,7 @@
 import React from 'react';
 import Produtos from './ListaDinamica/Produtos';
+import Header from './ListaDinamica/Header';
+import { ThemeStorage } from './ListaDinamica/ThemeContext';
 
 const App = () => {
   const [produtos, setProdutos] = React.useState([
@@ -28,12 +30,8 @@ const App = () => {
   }
 
   return (
-    <>
-      <h1>Produtos</h1>
-      <button onClick={handleAdd} style={{ marginRight: '10px' }}>
-        Adicionar
-      </button>
-      <hr />
+    <ThemeStorage>
+      <Header onAdd={handleAdd} />
       {produtos.map((produto) => (
         <Produtos
           key={produto.id}
@@ -44,7 +42,7 @@ const App = () => {
           onRemove={handleRemove}
         />
       ))}
-    </>
+    </ThemeStorage>
   );
 };
 
