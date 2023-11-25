@@ -15,7 +15,7 @@ export const ThemeStorage = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, handleTheme, appStyle }}>
+    <ThemeContext.Provider value={{ handleTheme, appStyle }}>
       {children}
     </ThemeContext.Provider>
   );
