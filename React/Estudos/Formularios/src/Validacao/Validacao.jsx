@@ -1,55 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '../Forms/Inputs/Input';
+import useForm from '../Hooks/useForm';
 
 const Validacao = () => {
-  const [cep, setCep] = useState('');
-  const [msg, setMsg] = useState('');
-  const [send, setSend] = useState('');
-
-  function validacaoCEP(value) {
-    if (value.length === 0) {
-      setMsg('Preencha o CEP');
-      return false;
-    } else if (!/^\d{5}-?\d{3}$/.test(value)) {
-      setMsg('Cep Invalido');
-      return false;
-    } else {
-      setMsg('');
-      return true;
-    }
-  }
-  function handleBlur({ target }) {
-    validacaoCEP(target.value);
-  }
-
-  function handleChange({ target }) {
-    if (msg) validacaoCEP(target.value);
-    setCep(target.value);
-  }
+  const cep = useForm('cep');
+  const email = useForm('email');
+  const nome = useForm();
+  const sobrenome = useForm(false);
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (validacaoCEP(cep)) {
-      setSend('Cep enviado');
+    if (cep.validate() && email.validate() && nome.validate()) {
+      console.log('Enviar');
     } else {
-      setSend('Cep não enviado');
+      console.log(' Não Enviar');
     }
   }
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <Input label="Nome" id="nome" type="text" {...nome} />
+        <Input label="Sobrenome" id="sobrenome" type="text" {...sobrenome} />
         <Input
           label="CEP"
           id="cep"
           type="text"
-          value={cep}
-          onChange={handleChange}
-          onBlur={handleBlur}
           placeholder="0000-000"
+          {...cep}
         />
-        <p>{msg}</p>
+        <Input label="Email" id="email" type="email" {...email} />
         <button>Enviar</button>
-        <p>{send}</p>
       </form>
     </>
   );
