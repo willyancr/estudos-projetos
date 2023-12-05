@@ -1,7 +1,5 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import React, { useState } from 'react';
+import Radio from './Forms/Radio';
 
 const perguntas = [
   {
@@ -39,18 +37,64 @@ const perguntas = [
 ];
 
 const App = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const [respostas, setRespostas] = useState({
+    p1: '',
+    p2: '',
+    p3: '',
+    p4: '',
+  });
+  const [slide, setSlide] = useState(0);
+  const [resultado, setResultado] = useState(null);
 
+  function resultadoFinal() {
+    const corretas = perguntas.filter(
+      ({ id, resposta }) => respostas[id] === resposta,
+    );
+    setResultado(
+      `Você acertou ${corretas.length} das ${perguntas.length} perguntas.`,
+    );
+  }
+
+  function handleNext() {
+    if (slide < perguntas.length - 1) {
+      setSlide(slide + 1);
+    } else {
+      setSlide(slide + 1);
+      resultadoFinal();
+    }
+  }
+  function handleChange({ target }) {
+    setRespostas({ ...respostas, [target.id]: target.value });
+  }
+  function voltarSlideInicio() {
+    setSlide(0);
+    setRespostas({
+      p1: '',
+      p2: '',
+      p3: '',
+      p4: '',
+    });
+    setResultado(null);
+  }
   return (
     <>
-      <form>
-        <h3></h3>
-      </form>
-    </> 
+      {perguntas.map((pergunta, index) => (
+        <Radio
+          active={slide === index}
+          key={pergunta.id}
+          value={respostas[pergunta.id]}
+          onChange={handleChange}
+          {...pergunta}
+        />
+      ))}
+      {resultado ? (
+        <div>
+          <p>{resultado}</p> <button onClick={voltarSlideInicio}>Inicio</button>
+        </div>
+      ) : (
+        <button onClick={handleNext}>Próxima</button>
+      )}
+    </>
   );
 };
 
