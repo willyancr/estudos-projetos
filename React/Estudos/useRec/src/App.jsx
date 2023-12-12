@@ -1,7 +1,7 @@
 import React from 'react';
-import Produtos from './ListaDinamica/Produtos';
-import Header from './ListaDinamica/Header';
-import { ThemeStorage } from './ListaDinamica/ThemeContext';
+import Produtos from './Components/Produtos';
+import Header from './Components/Header';
+import { ThemeStorage } from './Context/ThemeContext';
 
 const App = () => {
   const [produtos, setProdutos] = React.useState([

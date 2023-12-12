@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import Button from './Button';
-import { ThemeContext } from './ThemeContext';
+import { ThemeContext } from '../Context/ThemeContext';
 
 const Header = ({ onAdd }) => {
-  const {appStyle, handleTheme} = useContext(ThemeContext);
+  const { appStyle, handleTheme } = useContext(ThemeContext);
   return (
     <>
       <h1>Produtos</h1>
