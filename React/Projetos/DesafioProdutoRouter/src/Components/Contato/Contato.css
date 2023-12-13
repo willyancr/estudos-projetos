@@ -1,0 +1,29 @@
+.contato{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 2rem;
+}
+img{
+  width: 300px;
+  height: 450px;
+  background-size: cover;
+  border-radius: 1rem;
+}
+.informacoes{
+  margin: 1rem;
+}
+.informacoes h2{
+  margin-bottom: 1rem;
+} 
+.informacoes p{
+  margin-bottom: .8rem;
+  
+}
+.informacoes p span{
+  display: inline-block;
+  position: relative;
+  background: #969696;
+  width: 25px;
+  height: 3px;
+  margin-right: .5rem;
+}

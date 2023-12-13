@@ -1,22 +1,17 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './Components/Home';
-import Sobre from './Components/Sobre';
-import Login from './Components/Login';
-import NotFound from './Components/NotFound';
-import Header from './Components/Header';
+import React from 'react';
+import '../public/app.css'
+import Header from './Components/Header/Header';
 import Produto from './Components/Produtos/Produto';
+import Contato from './Components/Contato/Contato';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="sobre" element={<Sobre />} />
-        <Route path="login" element={<Login />} />
-        <Route path="produto/:id/*" element={<Produto />} />
-        <Route path="*" element={<NotFound />} />
+      <Route path='/' element={<Produto />}/>
+      <Route path='/contato' element={<Contato/>}/>
       </Routes>
     </BrowserRouter>
   );

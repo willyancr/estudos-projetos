@@ -1,0 +1,18 @@
+nav{
+  display: flex;
+  gap: 1rem;
+}
+.navlink{
+  background: #bdbdbd;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+.navlink:hover{
+  opacity: .9;
+}
+.active{
+  background: #969696;
+}
