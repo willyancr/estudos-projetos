@@ -1,34 +1,29 @@
-.contato{
+.produtoDescricao{
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
   animation: efeito 1s forwards;
 }
-.contato img{
+.produtoDescricao img{
   width: 300px;
   height: 450px;
   background-size: cover;
   border-radius: 1rem;
 }
-.informacoes{
+.produtoDescricao div{
   margin: 1rem;
 }
-.informacoes h2{
+.produtoDescricao h2{
   margin-bottom: 1rem;
-} 
-.informacoes p{
-  margin-bottom: .8rem;
-  
 }
-.informacoes p span{
+.produtoDescricaoPreco{
+  background: green;
   display: inline-block;
-  position: relative;
-  background: #969696;
-  width: 25px;
-  height: 3px;
-  margin-right: .5rem;
+  padding: .3rem .5rem;
+  border-radius: .5rem;
+  color: aliceblue;
+  margin-bottom: 1rem;
 }
-
 @keyframes efeito{
   from{
       opacity: 1;
@@ -39,3 +34,4 @@
       transform: translate3d(0,0,0);
   }
 }
+

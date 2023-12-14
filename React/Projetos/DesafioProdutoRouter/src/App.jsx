@@ -4,6 +4,7 @@ import '../public/app.css'
 import Header from './Components/Header/Header';
 import Produto from './Components/Produtos/Produto';
 import Contato from './Components/Contato/Contato';
+import ProdutoDescricao from './Components/Produtos/ProdutoDescricao';
 
 const App = () => {
   return (
@@ -11,7 +12,8 @@ const App = () => {
       <Header />
       <Routes>
       <Route path='/' element={<Produto />}/>
-      <Route path='/contato' element={<Contato/>}/>
+      <Route path='contato' element={<Contato/>}/>
+      <Route path='produto' element={<ProdutoDescricao />}/>
       </Routes>
     </BrowserRouter>
   );
