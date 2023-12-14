@@ -1,18 +1,35 @@
 import React from 'react';
 import './ProdutoDescricao.css';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const ProdutoDescricao = () => {
+  const { id } = useParams();
+  const [dados, setDados] = useState(null);
+
+  useEffect(() => {
+    async function dadosRanek() {
+      const response = await fetch(
+        `https://ranekapi.origamid.dev/json/api/produto/${id}`,
+      );
+      const json = await response.json();
+      setDados(json);
+    }
+    dadosRanek();
+  }, [id]);
   return (
-    <div className="produtoDescricao">
-      <img
-        src="https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt=""
-      />
-      <div>
-        <h2>Notebook</h2>
-        <p className="produtoDescricaoPreco">R$ 2300</p>
-        <p>notebook em geral</p>
-      </div>
+    <div>
+      {dados && (
+        <div className="produtoDescricao">
+          <img src={dados.fotos[0].src} alt="" />
+          <div>
+            <h2>{dados.nome}</h2>
+            <p className="produtoDescricaoPreco">R$ {dados.preco}</p>
+            <p>{dados.descricao}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

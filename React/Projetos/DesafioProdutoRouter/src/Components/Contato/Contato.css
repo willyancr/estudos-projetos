@@ -2,7 +2,7 @@
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
-  animation: efeito 1s forwards;
+  animation: efeito .4s forwards;
 }
 .contato img{
   width: 300px;

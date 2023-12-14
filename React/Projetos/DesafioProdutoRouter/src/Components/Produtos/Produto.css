@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-top: 2rem;
-  animation: efeito 1s forwards;
+  animation: efeito .4s ease-in-out;
 }
 
 .produtos img{

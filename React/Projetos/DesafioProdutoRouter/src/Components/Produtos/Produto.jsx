@@ -1,55 +1,39 @@
 import React from 'react';
 import './Produto.css';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import ProdutoDescricao from './ProdutoDescricao';
 
 const Produto = () => {
+  const [dados, setDados] = useState(null);
+
+  useEffect(() => {
+    async function dadosRanek() {
+      const response = await fetch(
+        `https://ranekapi.origamid.dev/json/api/produto`,
+      );
+      const json = await response.json();
+      setDados(json);
+    }
+    dadosRanek();
+  }, []);
+
   return (
     <div>
       <nav className="container">
-        <Link to="/produto" className="produtos">
-          <img
-            src="https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-          />
-          <h3>Produto</h3>
-        </Link>
-        <Link to="produto" className="produtos">
-          <img
-            src="https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-          />
-          <h3>Produto</h3>
-        </Link>
-        <Link to="produto" className="produtos">
-          <img
-            src="https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-          />
-          <h3>Produto</h3>
-        </Link>
-        <Link to="produto" className="produtos">
-          <img
-            src="https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-          />
-          <h3>Produto</h3>
-        </Link>
-        <Link to="produto" className="produtos">
-          <img
-            src="https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-          />
-          <h3>Produto</h3>
-        </Link>
-        <Link to="produto" className="produtos">
-          <img
-            src="https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-          />
-          <h3>Produto</h3>
-        </Link>
+        {dados &&
+          dados.map((produto) => (
+            <Link
+              key={produto.id}
+              to={`produto/${produto.id}`}
+              className="produtos"
+            >
+              <img src={produto.fotos[0].src} alt="" />
+              <h3>{produto.nome}</h3>
+            </Link>
+          ))}
       </nav>
-      
     </div>
   );
 };
