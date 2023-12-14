@@ -23,6 +23,7 @@ const ProdutoDescricao = () => {
       <Helmet>
         <title>Ranek | Produtos Infos</title>
       </Helmet>
+      
       {dados && (
         <div className="produtoDescricao">
           <img src={dados.fotos[0].src} alt="" />
