@@ -1,8 +1,7 @@
-import React from 'react';
 import './ProdutoDescricao.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 
 const ProdutoDescricao = () => {
   const { id } = useParams();
@@ -18,8 +17,12 @@ const ProdutoDescricao = () => {
     }
     dadosRanek();
   }, [id]);
+
   return (
     <div>
+      <Helmet>
+        <title>Ranek | Produtos Infos</title>
+      </Helmet>
       {dados && (
         <div className="produtoDescricao">
           <img src={dados.fotos[0].src} alt="" />

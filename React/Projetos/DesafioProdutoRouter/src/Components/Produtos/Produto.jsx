@@ -1,9 +1,7 @@
-import React from 'react';
 import './Produto.css';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import ProdutoDescricao from './ProdutoDescricao';
+import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 
 const Produto = () => {
   const [dados, setDados] = useState(null);
@@ -21,6 +19,9 @@ const Produto = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Ranek | Produtos</title>
+      </Helmet>
       <nav className="container">
         {dados &&
           dados.map((produto) => (

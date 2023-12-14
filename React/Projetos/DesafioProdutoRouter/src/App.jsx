@@ -5,6 +5,7 @@ import Header from './Components/Header/Header';
 import Produto from './Components/Produtos/Produto';
 import Contato from './Components/Contato/Contato';
 import ProdutoDescricao from './Components/Produtos/ProdutoDescricao';
+import Footer from './Components/Footer/Footer';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="contato" element={<Contato />} />
         <Route path="produto/:id" element={<ProdutoDescricao />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
