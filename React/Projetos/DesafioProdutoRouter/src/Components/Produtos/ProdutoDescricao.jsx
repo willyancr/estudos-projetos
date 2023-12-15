@@ -6,34 +6,41 @@ import { Helmet } from 'react-helmet';
 const ProdutoDescricao = () => {
   const { id } = useParams();
   const [dados, setDados] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function dadosRanek() {
-      const response = await fetch(
-        `https://ranekapi.origamid.dev/json/api/produto/${id}`,
-      );
-      const json = await response.json();
-      setDados(json);
+      try {
+        setLoading(true);
+        const response = await fetch(
+          `https://ranekapi.origamid.dev/json/api/produto/${id}`,
+        );
+        const json = await response.json();
+        setDados(json);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
     }
     dadosRanek();
   }, [id]);
 
+  if (loading) return <p>Carregando...</p>;
+  if (dados === null) return null;
   return (
     <div>
       <Helmet>
-        <title>Ranek | Produtos Infos</title>
+        <title>Ranek | {dados.nome}</title>
       </Helmet>
-      
-      {dados && (
-        <div className="produtoDescricao">
-          <img src={dados.fotos[0].src} alt="" />
-          <div>
-            <h2>{dados.nome}</h2>
-            <p className="produtoDescricaoPreco">R$ {dados.preco}</p>
-            <p>{dados.descricao}</p>
-          </div>
+      <div className="produtoDescricao">
+        <img src={dados.fotos[0].src} alt="" />
+        <div>
+          <h2>{dados.nome}</h2>
+          <p className="produtoDescricaoPreco">R$ {dados.preco}</p>
+          <p>{dados.descricao}</p>
         </div>
-      )}
+      </div>
     </div>
   );
 };
