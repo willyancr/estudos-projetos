@@ -1,0 +1,63 @@
+.login{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  min-height: 100vh;
+  margin-top: 2rem;
+}
+.responsiveImageLogin{
+  width: 90%;
+  height: 100%;
+  object-fit: cover;
+}
+.loginForm{
+  margin-top: 25vh;
+}
+.loginForm h1{
+  display: block;
+  font-size: 2.4rem;
+  letter-spacing: .2rem;
+  position: relative;
+  margin-bottom: 1rem;
+}
+.loginForm span{
+  position: absolute;
+  background: #fb1;
+  border-radius: .3rem;
+  height: 25px;
+  width: 25px;
+  top: 28px;
+  left: -7px;
+  z-index: -1;
+}
+.loginForm input{
+  display: block;
+  width: 60%;
+  padding: .4rem;
+  border-radius: .4rem;
+  border: 2px solid white;
+  background-color: #d9d9d9;
+  margin-bottom: 1rem;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+  box-shadow: 0px 0px 0px 1px transparent;
+}
+.loginForm input:hover,
+.loginForm input:focus{
+  border: 2px solid #fb1;
+  box-shadow: 0px 0px 0px 3px #f7f48b;
+  background: white;
+}
+.loginForm button{
+  padding: .5rem 2rem;
+  background: #fb1;
+  color: #764701;
+  border: 2px solid white;
+  border-radius: .4rem;
+  cursor: pointer;
+}
+.loginForm button:hover{
+  border: 2px solid #fb1;
+  box-shadow: 0px 0px 0px 3px #f7f48b;
+  transition: .1s ease;
+}
