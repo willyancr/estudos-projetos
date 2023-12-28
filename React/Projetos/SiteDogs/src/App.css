@@ -13,7 +13,9 @@
   padding: 0 1rem;
   margin: 0 auto;
 }
-
+.efeito{
+  animation: efeito .5s ease;
+}
 h1, h2, h3, h4, p{
   margin: 0;
 }
@@ -31,4 +33,14 @@ button, input{
   display: block;
   font-size: 1rem;
   color: #333;
+}
+@keyframes efeito{
+  from{
+      opacity: 1;
+      transform: translate3d(-50px, 0, 0);
+  }
+  to{
+      opacity: 1;
+      transform: translate3d(0,0,0);
+  }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Home.module.css';
 const Home = () => {
   return (
-    <section className={`${styles.home} container`}>
+    <section className={`${styles.home} container efeito`}>
       <div>
         <ul className={styles.ulFeed}>
           <div className={styles.imageDogsFeed}>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
-    <section className={styles.login}>
+    <section className={`${styles.login} efeito`}>
       <div>
         <img
           src="../image/dog_login.png"
