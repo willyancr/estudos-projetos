@@ -1,7 +1,27 @@
 import React from 'react';
 import './LoginGlobal.css';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import Input from '../Input/Input';
+import Button from '../Button/Button';
+
+const schema = yup
+  .object({
+    email: yup.string().email('Email inválido').required('Email obrigatório'),
+  })
+  .required();
 
 const LostPassword = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
+  function onSubmit(event) {
+    console.log(event);
+  }
   return (
     <section className="login">
       <div>
@@ -11,11 +31,16 @@ const LostPassword = () => {
           className="responsiveImageLogin"
         />
       </div>
-      <form className='loginForm efeito'>
-        <h1><span></span>Perdeu a senha?</h1>
+      <form onSubmit={handleSubmit(onSubmit)} className="loginForm efeito">
+        <h1>
+          <span></span>Perdeu a senha?
+        </h1>
+
         <label htmlFor="email">Email / Usuário</label>
-        <input type="text" id="email" />
-        <button>Enviar Email</button>
+        <Input register={register} id="email" type="text" />
+        <p className="messageForm">{errors.email?.message}</p>
+
+        <Button name="Recuperar" type="submit" />
       </form>
     </section>
   );

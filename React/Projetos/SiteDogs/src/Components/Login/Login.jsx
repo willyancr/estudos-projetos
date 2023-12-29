@@ -1,33 +1,74 @@
 import React from 'react';
 import styles from './Login.module.css';
-import './LoginGlobal.css'
-import { Link } from 'react-router-dom';
+import './LoginGlobal.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import Input from '../Input/Input';
+import Button from '../Button/Button';
+
+const schema = yup
+  .object({
+    usuario: yup.string().required('Usuário obrigatório'),
+    password: yup
+      .string()
+      .required('Senha obrigatória')
+      .min(6, 'No mínimo 6 digitos'),
+  })
+  .required();
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+  const navigate = useNavigate();
+
+  function onSubmit(event) {
+    navigate('/conta');
+    console.log(event);
+  }
+
   return (
-    <section className='login'>
+    <section className="login">
       <div>
         <img
           src="../image/dog_login.png"
           alt=""
-          className='responsiveImageLogin'
+          className="responsiveImageLogin"
         />
       </div>
-      <form className={`${styles.loginForm} loginForm efeito`}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={`${styles.loginForm} loginForm efeito`}
+      >
         <h1>
           <span></span>Login
         </h1>
+
         <label htmlFor="usuario">Usuário</label>
-        <input type="text" id="usuario" />
-        <label htmlFor="senha">Senha</label>
-        <input type="password" id="senha" />
-        <button>Entrar</button>
+        <Input register={register} id="usuario" type="text" />
+        <p className="messageForm">{errors.usuario?.message}</p>
 
-        <Link to='/login/perdeu' className={styles.lostPassaword}><p>Perdeu a Senha?</p></Link>
+        <label htmlFor="password">Senha</label>
+        <Input register={register} id="password" type="password" />
+        <p className="messageForm">{errors.password?.message}</p>
 
-        <h1><span></span>Cadastre-se</h1>
+        <Button name="Entrar" type="submit" />
+
+        <Link to="/login/perdeu" className={styles.lostPassaword}>
+          <p>Perdeu a Senha?</p>
+        </Link>
+
+        <h1>
+          <span></span>Cadastre-se
+        </h1>
         <p>Ainda não possui conta? Cadastre-se no site.</p>
-        <Link to='/login/cadastrar' className={styles.btnRegister}><button>Cadastro</button></Link>
+        <Link to="/login/cadastrar" className={styles.btn}>
+          <Button name="Cadastrar" />
+        </Link>
       </form>
     </section>
   );

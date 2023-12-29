@@ -22,6 +22,7 @@
 .loginForm p:nth-child(9){
   margin-bottom: 1rem;
 }
-.btnRegister{
+.btn{
+  display: inline-block;
   text-decoration: none;
 }
