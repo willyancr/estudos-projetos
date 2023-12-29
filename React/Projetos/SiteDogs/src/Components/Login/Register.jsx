@@ -38,7 +38,7 @@ const Register = () => {
       </div>
 
       <form className="loginForm efeito" onSubmit={handleSubmit(onSubmit)}>
-        <h1>
+        <h1 className='title'>
           <span></span>Cadastre-se
         </h1>
         <label htmlFor="usuario">Usuário</label>

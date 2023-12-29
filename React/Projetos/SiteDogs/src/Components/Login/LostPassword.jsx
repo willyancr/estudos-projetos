@@ -8,7 +8,7 @@ import Button from '../Button/Button';
 
 const schema = yup
   .object({
-    email: yup.string().email('Email inválido').required('Email obrigatório'),
+    email: yup.string().email('Email inválido').required('Digite seu email'),
   })
   .required();
 
@@ -32,11 +32,11 @@ const LostPassword = () => {
         />
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="loginForm efeito">
-        <h1>
+        <h1 className='title'>
           <span></span>Perdeu a senha?
         </h1>
 
-        <label htmlFor="email">Email / Usuário</label>
+        <label htmlFor="email">Email </label>
         <Input register={register} id="email" type="text" />
         <p className="messageForm">{errors.email?.message}</p>
 

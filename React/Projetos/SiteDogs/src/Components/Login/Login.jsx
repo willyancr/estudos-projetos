@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './Login.module.css';
 import './LoginGlobal.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -40,11 +39,8 @@ const Login = () => {
           className="responsiveImageLogin"
         />
       </div>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className={`${styles.loginForm} loginForm efeito`}
-      >
-        <h1>
+      <form onSubmit={handleSubmit(onSubmit)} className={'loginForm efeito'}>
+        <h1 className="title">
           <span></span>Login
         </h1>
 
@@ -58,15 +54,17 @@ const Login = () => {
 
         <Button name="Entrar" type="submit" />
 
-        <Link to="/login/perdeu" className={styles.lostPassaword}>
+        <Link to="/login/perdeu" className="lostPassaword">
           <p>Perdeu a Senha?</p>
         </Link>
 
-        <h1>
+        <h1 className="title">
           <span></span>Cadastre-se
         </h1>
-        <p>Ainda não possui conta? Cadastre-se no site.</p>
-        <Link to="/login/cadastrar" className={styles.btn}>
+        <p style={{ marginBottom: '1rem' }}>
+          Ainda não possui conta? Cadastre-se no site.
+        </p>
+        <Link to="/login/cadastrar">
           <Button name="Cadastrar" />
         </Link>
       </form>

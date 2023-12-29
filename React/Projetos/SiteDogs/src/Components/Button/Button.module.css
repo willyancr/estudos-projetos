@@ -1,4 +1,5 @@
 .btn{
+  display: inline-block;
   margin-top: 1rem;
   padding: .5rem 1rem;
   background: #fb1;
@@ -6,6 +7,8 @@
   border: 2px solid white;
   border-radius: .4rem;
   cursor: pointer;
+  text-decoration: none;
+
 }
 .btn:hover{
   border: 2px solid #fb1;
