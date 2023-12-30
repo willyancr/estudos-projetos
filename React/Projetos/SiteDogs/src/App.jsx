@@ -8,6 +8,7 @@ import Login from './Components/Login/Login';
 import LostPassword from './Components/Login/LostPassword';
 import Register from './Components/Login/Register';
 import Dashboard from './Components/Account/Dashboard/Dashboard';
+import Statistics from './Components/Account/Dashboard/Statistics';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/login/perdeu" element={<LostPassword />} />
         <Route path="/login/cadastrar" element={<Register />} />
         <Route path="/conta" element={<Dashboard />} />
+        <Route path="/conta/estatisticas" element={<Statistics />} />
       </Routes>
       <Footer />
     </BrowserRouter>

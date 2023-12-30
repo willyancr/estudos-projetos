@@ -1,0 +1,36 @@
+.dashboard{
+  margin-top: 5rem;
+  height: 100vh;
+}
+.dashboardHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboardIcons{
+  display: flex;
+  gap: .8rem;
+}
+.dashboardIcons span{
+  display: block;
+  background: #d9dbda;
+  width: 2.8rem;
+  padding: .6rem ;
+  border-radius: .3rem;
+  cursor: pointer;
+  text-align: center;
+}
+.dashboardIcons span:hover:not(.selected) {
+  background: white;
+  border: .8px solid black;
+  transition: .2s ease;
+}
+.dashboardIcon{
+  border: 2px solid #fb1;
+  box-shadow: 0px 0px 0px 3px #f7f48b;
+  background: white !important;
+  
+}
+.dashboardIcon i{
+  color: #fb1;
+}
