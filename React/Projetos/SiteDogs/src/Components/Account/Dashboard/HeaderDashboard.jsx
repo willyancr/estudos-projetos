@@ -23,9 +23,16 @@ const HeaderDashboard = ({ title }) => {
   const handleIconClick = useCallback(
     (index, event) => {
       event.preventDefault();
-      setSelectionIcon(index);
+      setSelectionIcon((prev) => {
+        if (prev === index) {
+          navigate(icons[index].to);
+          return prev;
+        } else {
+          return index;
+        }
+      });
     },
-    [setSelectionIcon, navigate],
+    [setSelectionIcon, navigate, icons],
   );
 
   return (
@@ -40,13 +47,7 @@ const HeaderDashboard = ({ title }) => {
             <Link
               key={item.icon}
               to={item.to}
-              onClick={(event) => {
-                if (selectedIcon === index) {
-                  navigate(item.to);
-                } else {
-                  handleIconClick(index, event);
-                }
-              }}
+              onClick={(event) => handleIconClick(index, event)}
             >
               <span
                 className={`${
