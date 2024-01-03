@@ -5,7 +5,10 @@ import HeaderDashboard from './HeaderDashboard';
 
 const Dashboard = () => {
   return (
-    <HeaderDashboard title='Minha Conta'/>
+    <>
+      <HeaderDashboard title="Minha Conta" />
+      <div className="dashboardMain"></div>
+    </>
   );
 };
 

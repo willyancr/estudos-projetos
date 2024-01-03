@@ -1,9 +1,9 @@
-.dashboard{
-  margin-top: 5rem;
+.dashboardMain{
   height: 100vh;
 }
 .dashboardHeader{
   display: flex;
+  margin-top: 5rem;
   align-items: center;
   justify-content: space-between;
 }

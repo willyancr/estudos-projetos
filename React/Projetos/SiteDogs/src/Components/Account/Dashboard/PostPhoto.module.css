@@ -1,0 +1,12 @@
+.main{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.mainForm Input{
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.mainForm span{
+  font-size: small;
+}

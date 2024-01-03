@@ -6,7 +6,7 @@ const HeaderDashboard = ({ title }) => {
     () => [
       { icon: 'fa-house', to: '/conta' },
       { icon: 'fa-chart-simple', to: '/conta/estatisticas' },
-      { icon: 'fa-plus fa-lg', to: '/conta' },
+      { icon: 'fa-plus fa-lg', to: '/conta/postar' },
       { icon: 'fa-right-from-bracket', to: '/conta' },
     ],
     [],
@@ -26,9 +26,8 @@ const HeaderDashboard = ({ title }) => {
     event.preventDefault();
     navigate(to);
   }
-
   return (
-    <section className="dashboard container">
+    <section className="container">
       <div className="dashboardHeader">
         <h1 className="title">
           <span></span>

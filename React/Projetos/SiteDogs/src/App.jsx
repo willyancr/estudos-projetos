@@ -9,6 +9,7 @@ import LostPassword from './Components/Login/LostPassword';
 import Register from './Components/Login/Register';
 import Dashboard from './Components/Account/Dashboard/Dashboard';
 import Statistics from './Components/Account/Dashboard/Statistics';
+import PostPhoto from './Components/Account/Dashboard/PostPhoto';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/login/cadastrar" element={<Register />} />
         <Route path="/conta" element={<Dashboard />} />
         <Route path="/conta/estatisticas" element={<Statistics />} />
+        <Route path="/conta/postar" element={<PostPhoto />} />
       </Routes>
       <Footer />
     </BrowserRouter>
