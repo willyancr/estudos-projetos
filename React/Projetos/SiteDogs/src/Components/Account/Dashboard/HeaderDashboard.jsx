@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const HeaderDashboard = ({ title }) => {
   const icons = useMemo(
@@ -13,27 +13,19 @@ const HeaderDashboard = ({ title }) => {
   );
   const [selectedIcon, setSelectionIcon] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    if (selectedIcon !== null) {
-      navigate(icons[selectedIcon].to);
-    }
-  }, [selectedIcon, icons, navigate]);
+    const currentIcon = icons.findIndex(
+      (icon) => icon.to === location.pathname,
+    );
+    setSelectionIcon(currentIcon);
+  }, [location, icons]);
 
-  const handleIconClick = useCallback(
-    (index, event) => {
-      event.preventDefault();
-      setSelectionIcon((prev) => {
-        if (prev === index) {
-          navigate(icons[index].to);
-          return prev;
-        } else {
-          return index;
-        }
-      });
-    },
-    [setSelectionIcon, navigate, icons],
-  );
+  function handleIconClick(to, event) {
+    event.preventDefault();
+    navigate(to);
+  }
 
   return (
     <section className="dashboard container">
@@ -47,7 +39,7 @@ const HeaderDashboard = ({ title }) => {
             <Link
               key={item.icon}
               to={item.to}
-              onClick={(event) => handleIconClick(index, event)}
+              onClick={(event) => handleIconClick(index, item.to, event)}
             >
               <span
                 className={`${
