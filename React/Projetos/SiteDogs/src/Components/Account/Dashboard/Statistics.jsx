@@ -1,14 +1,9 @@
 import React from 'react';
 import './GlobalDashboard.css';
+import HeaderDashboard from './HeaderDashboard';
 
 const Statistics = () => {
-  return (
-    <section className="dashboard container efeito">
-      <div>
-        <h1>Estatística</h1>
-      </div>
-    </section>
-  );
+  return <HeaderDashboard title="Estatisticas" />;
 };
 
 export default Statistics;
