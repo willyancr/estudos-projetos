@@ -8,7 +8,7 @@ const PostPhoto = () => {
   return (
     <>
       <HeaderDashboard title="Poste sua foto" />
-      <section className={`${styles.main} container dashboardMain`}>
+      <section className={`${styles.main} container dashboardMain efeito`}>
         <form className={styles.mainForm}>
           <label htmlFor="nome">Nome</label>
           <Input />
