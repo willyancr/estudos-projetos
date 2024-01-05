@@ -1,6 +1,5 @@
 import React from 'react';
 import './GlobalDashboard.css';
-import { Link } from 'react-router-dom';
 import HeaderDashboard from './HeaderDashboard';
 
 const Dashboard = () => {
