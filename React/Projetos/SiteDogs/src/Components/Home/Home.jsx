@@ -12,8 +12,8 @@ const Home = () => {
   ];
 
   return (
-    <section className={`${styles.home} container efeito`}>
-      <div>
+    <section>
+      <div className={`${styles.home} container efeito`}>
         <ul className={styles.ulFeed}>
           {images.map((image) => (
             <div className={styles.imageDogsFeed}>
@@ -27,6 +27,24 @@ const Home = () => {
             </div>
           ))}
         </ul>
+      </div>
+      <div className={styles.modal}>
+        <div>
+          <img src="../image/dog.jpg" alt="" />
+        </div>
+        <div>
+          <p>
+            <a href="">@cat</a>
+            <span>
+              <i className="fa-regular fa-eye"></i> 21568
+            </span>
+          </p>
+          <h1>Ellie</h1>
+          <ul>
+            <li>| 4 kg</li>
+            <li>| 09 anos</li>
+          </ul>
+        </div>
       </div>
     </section>
   );
