@@ -10,6 +10,7 @@ import Register from './Components/Login/Register';
 import Dashboard from './Components/Account/Dashboard/Dashboard';
 import Statistics from './Components/Account/Dashboard/Statistics';
 import PostPhoto from './Components/Account/Dashboard/PostPhoto';
+import Modal from './Components/Home/Modal';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/conta" element={<Dashboard />} />
         <Route path="/conta/estatisticas" element={<Statistics />} />
         <Route path="/conta/postar" element={<PostPhoto />} />
+        <Route path="/modal" element={<Modal />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -1,0 +1,42 @@
+.modal{
+  display: flex;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.4);
+  z-index: 1000;
+  padding: 2rem calc(4rem + 15px) 2rem 4rem;
+}
+.modalContainer{
+  display: grid;
+  grid-template-columns: 36rem 20rem;
+  grid-template-rows: auto 1fr auto;
+  background: white;
+  margin: auto;
+  height: 36rem;
+  overflow: hidden;
+  border-radius: .4rem;
+}
+.modalImg{
+  grid-row: 1/4;
+}
+.modalForm{
+  padding: 2rem;
+}
+.modalViews {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.modalViews a, span, i{
+  color: #AFAFAF;
+  text-decoration: none;
+}
+.modalComments{
+  overflow-y: auto;
+  word-break: break-word;
+  padding: 0 2rem;
+}
