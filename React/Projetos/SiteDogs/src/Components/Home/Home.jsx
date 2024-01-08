@@ -41,10 +41,16 @@ const Home = () => {
           </p>
           <h1>Ellie</h1>
           <ul>
-            <li>| 4 kg</li>
+            <li>| 5 kg</li>
             <li>| 09 anos</li>
           </ul>
         </div>
+        <ul>
+          <li>
+            <b>cat:</b>
+            <span>Linda essa dogzinha</span>
+          </li>
+        </ul>
       </div>
     </section>
   );

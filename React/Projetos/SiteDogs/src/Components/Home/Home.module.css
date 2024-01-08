@@ -35,3 +35,12 @@
   left: 50%;
   transition: opacity 0.2s ease;
 }
+.modal{
+  display: grid;
+  grid-template-columns: 36rem 20rem;
+  grid-template-rows: auto 1fr auto;
+}
+.modal img{
+  max-width: 100%;  
+  border-radius: .4rem;
+}
