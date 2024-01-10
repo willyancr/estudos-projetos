@@ -1,10 +1,10 @@
 .input{
   display: block;
   width: 60%;
-  padding: .4rem;
+  padding: .6rem;
   border-radius: .4rem;
   border: 2px solid white;
-  background-color: #d9d9d9;
+  background-color: #ededed;
   outline: none;
   transition: box-shadow 0.3s ease;
   box-shadow: 0px 0px 0px 1px transparent;
@@ -12,6 +12,6 @@
 .input:hover, 
 .input:focus{
   border: 2px solid #fb1;
-  box-shadow: 0px 0px 0px 3px #f7f48b;
+  box-shadow: 0px 0px 0px 3px #FFEEAA;
   background: white;
 }

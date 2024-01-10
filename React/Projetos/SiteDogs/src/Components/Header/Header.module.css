@@ -13,6 +13,10 @@
   align-items: center;
   height: 4rem;
 }
+.nav i{
+  color: black;
+}
 .link{
   text-decoration: none;
 }
+

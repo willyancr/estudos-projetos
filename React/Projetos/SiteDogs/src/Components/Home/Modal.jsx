@@ -1,11 +1,12 @@
-import React from 'react';
 import styles from './Modal.module.css';
-import Input from '../Input/Input';
 
-const Modal = () => {
+const Modal = ({ onClose }) => {
+  function handleModalClick(e) {
+    e.stopPropagation(); // Impedir que o clique se propague para o conteúdo do modal
+  }
   return (
-    <div className={styles.modal}>
-      <div className={styles.modalContainer}>
+    <div onClick={onClose} className={styles.modal}>
+      <div onClick={handleModalClick} className={styles.modalContainer}>
         <div className={styles.modalImg}>
           <img src="../image/dog.jpg" alt="" />
         </div>

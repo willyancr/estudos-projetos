@@ -27,6 +27,8 @@
   border: .8px solid black;
   transition: .2s ease;
 }
+.dashboardIcons span i{
+}
 .dashboardIcon{
   border: 2px solid #fb1;
   box-shadow: 0px 0px 0px 3px #fb1;
