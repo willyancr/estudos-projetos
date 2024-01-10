@@ -1,6 +1,6 @@
 import styles from './Modal.module.css';
 
-const Modal = ({ onClose }) => {
+const Modal = ({ onClose, views }) => {
   function handleModalClick(e) {
     e.stopPropagation(); // Impedir que o clique se propague para o conteúdo do modal
   }
@@ -14,7 +14,7 @@ const Modal = ({ onClose }) => {
           <p className={styles.modalViews}>
             <a href="">@belinha</a>
             <span>
-              <i className="fa-regular fa-eye"></i> 21568
+              <i className="fa-regular fa-eye"></i> {views}
             </span>
           </p>
           <h1 className={styles.modalTitle}>
