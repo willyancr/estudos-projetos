@@ -5,7 +5,7 @@ const Input = ({ register, id, ...props }) => {
   if (register) {
     return (
       <>
-        <input className={styles.input} {...register(id)} {...props} />
+        <input className={styles.input} {...register(id)} id={id} {...props} />
       </>
     );
   }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './LoginGlobal.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -13,7 +13,7 @@ const schema = yup
     password: yup
       .string()
       .required('Senha obrigatória')
-      .min(6, 'No mínimo 6 digitos'),
+      .min(3, 'No mínimo 3 digitos'),
   })
   .required();
 
@@ -23,13 +23,30 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  function onSubmit(event) {
-    navigate('/conta');
-    console.log(event);
-  }
-
+  // função de login
+  const handleLogin = async (event) => {
+    try {
+      const response = await fetch(
+        'https://dogsapi.origamid.dev/json/jwt-auth/v1/token',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+        },
+      );
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <section className="login">
       <div>
@@ -39,17 +56,29 @@ const Login = () => {
           className="responsiveImageLogin"
         />
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} className={'loginForm efeito'}>
+      <form onSubmit={handleSubmit(handleLogin)} className={'loginForm efeito'}>
         <h1 className="title">
           <span></span>Login
         </h1>
 
         <label htmlFor="usuario">Usuário</label>
-        <Input register={register} id="usuario" type="text" />
+        <Input
+          register={register}
+          id="usuario"
+          type="text"
+          value={username}
+          onChange={({ target }) => setUsername(target.value)}
+        />
         <p className="messageForm">{errors.usuario?.message}</p>
 
         <label htmlFor="password">Senha</label>
-        <Input register={register} id="password" type="password" />
+        <Input
+          register={register}
+          id="password"
+          type="password"
+          value={password}
+          onChange={({ target }) => setPassword(target.value)}
+        />
         <p className="messageForm">{errors.password?.message}</p>
 
         <Button name="Entrar" type="submit" />
