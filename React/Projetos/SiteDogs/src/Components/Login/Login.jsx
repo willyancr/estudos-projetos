@@ -29,7 +29,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   // função de login
-  const handleLogin = async (event) => {
+  const handleLogin = async () => {
     try {
       const response = await fetch(
         'https://dogsapi.origamid.dev/json/jwt-auth/v1/token',
@@ -44,7 +44,7 @@ const Login = () => {
       const data = await response.json();
       console.log(data);
     } catch (error) {
-      console.error(error);
+      console.error('Erro no login: ', error);
     }
   };
   return (
