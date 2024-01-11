@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import { TOKEN_POST } from '../../api';
+import { TOKEN_POST, USER_GET } from '../../api';
 
 const schema = yup
   .object({
@@ -27,15 +27,29 @@ const Login = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  // função de login
-  const handleLogin = async () => {
+  // Recupera os dados do usuário do servidor usando o token fornecido.
+  const getUser = async (token) => {
+    const { url, options } = USER_GET(token);
     try {
-      const { url, options } = TOKEN_POST({ username: username.value, password });
       const response = await fetch(url, options);
       const json = await response.json();
       console.log(json);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Função resposável pelo login
+  const handleLogin = async () => {
+    try {
+      
+      const { url, options } = TOKEN_POST({ username, password }); // Obter a URL e as opções para a requisição de login
+      const response = await fetch(url, options);
+      const json = await response.json();
+      window.localStorage.setItem('token', json.token); // Armazenar o token no localStorage
+      getUser(json.token); // Obter os dados do usuário usando o token
     } catch (error) {
       console.error('Erro no login: ', error);
     }
