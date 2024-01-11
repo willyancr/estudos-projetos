@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import { TOKEN_POST } from '../../api';
 
 const schema = yup
   .object({
@@ -31,18 +32,10 @@ const Login = () => {
   // função de login
   const handleLogin = async () => {
     try {
-      const response = await fetch(
-        'https://dogsapi.origamid.dev/json/jwt-auth/v1/token',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username, password }),
-        },
-      );
-      const data = await response.json();
-      console.log(data);
+      const { url, options } = TOKEN_POST({ username: username.value, password });
+      const response = await fetch(url, options);
+      const json = await response.json();
+      console.log(json);
     } catch (error) {
       console.error('Erro no login: ', error);
     }
