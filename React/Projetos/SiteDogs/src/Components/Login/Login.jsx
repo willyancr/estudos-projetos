@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './LoginGlobal.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -27,7 +27,16 @@ const Login = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  // const navigate = useNavigate();
+
+  // Este efeito é executado uma vez quando o componente é montado
+  useEffect(() => {
+    // Verifica se um token existe no armazenamento local
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      // Se um token existe, chama a função getUser com o token
+      getUser(token);
+    }
+  }, []);
 
   // Recupera os dados do usuário do servidor usando o token fornecido.
   const getUser = async (token) => {
@@ -44,7 +53,6 @@ const Login = () => {
   // Função resposável pelo login
   const handleLogin = async () => {
     try {
-      
       const { url, options } = TOKEN_POST({ username, password }); // Obter a URL e as opções para a requisição de login
       const response = await fetch(url, options);
       const json = await response.json();
