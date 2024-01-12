@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import './LoginGlobal.css';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import { TOKEN_POST, USER_GET } from '../../api';
+import { UserContext } from '../../UserContext';
 
 const schema = yup
   .object({
@@ -28,39 +29,11 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  // Este efeito é executado uma vez quando o componente é montado
-  useEffect(() => {
-    // Verifica se um token existe no armazenamento local
-    const token = window.localStorage.getItem('token');
-    if (token) {
-      // Se um token existe, chama a função getUser com o token
-      getUser(token);
-    }
-  }, []);
-
-  // Recupera os dados do usuário do servidor usando o token fornecido.
-  const getUser = async (token) => {
-    const { url, options } = USER_GET(token);
-    try {
-      const response = await fetch(url, options);
-      const json = await response.json();
-      console.log(json);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const { userLogin } = React.useContext(UserContext);
 
   // Função resposável pelo login
   const handleLogin = async () => {
-    try {
-      const { url, options } = TOKEN_POST({ username, password }); // Obter a URL e as opções para a requisição de login
-      const response = await fetch(url, options);
-      const json = await response.json();
-      window.localStorage.setItem('token', json.token); // Armazenar o token no localStorage
-      getUser(json.token); // Obter os dados do usuário usando o token
-    } catch (error) {
-      console.error('Erro no login: ', error);
-    }
+    await userLogin(username, password);
   };
   return (
     <section className="login">

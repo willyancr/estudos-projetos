@@ -16,6 +16,7 @@ export const UserStorage = ({ children }) => {
     const json = await response.json();
     setData(json); // Atualiza os dados do usuário com o JSON obtido
     setLogin(true); // Define o status de login como true
+    console.log(json);
   }
   //Faz a autenticação de um usuário com o nome de usuário e senha fornecidos.
   async function userLogin(username, password) {
@@ -26,6 +27,6 @@ export const UserStorage = ({ children }) => {
   }
 
   return (
-    <UserContext.Provider value={userLogin}>{children}</UserContext.Provider>
+<UserContext.Provider value={{userLogin, data}}>{children}</UserContext.Provider>
   );
 };
