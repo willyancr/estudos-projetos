@@ -11,22 +11,25 @@ import Dashboard from './Components/Account/Dashboard/Dashboard';
 import Statistics from './Components/Account/Dashboard/Statistics';
 import PostPhoto from './Components/Account/Dashboard/PostPhoto';
 import Modal from './Components/Home/Modal';
+import { UserStorage } from './UserContext';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/login/perdeu" element={<LostPassword />} />
-        <Route path="/login/cadastrar" element={<Register />} />
-        <Route path="/conta" element={<Dashboard />} />
-        <Route path="/conta/estatisticas" element={<Statistics />} />
-        <Route path="/conta/postar" element={<PostPhoto />} />
-        <Route path="/modal" element={<Modal />} />
-      </Routes>
-      <Footer />
+      <UserStorage>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/login/perdeu" element={<LostPassword />} />
+          <Route path="/login/cadastrar" element={<Register />} />
+          <Route path="/conta" element={<Dashboard />} />
+          <Route path="/conta/estatisticas" element={<Statistics />} />
+          <Route path="/conta/postar" element={<PostPhoto />} />
+          <Route path="/modal" element={<Modal />} />
+        </Routes>
+        <Footer />
+      </UserStorage>
     </BrowserRouter>
   );
 };
