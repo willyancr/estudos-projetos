@@ -1,12 +1,11 @@
 import './LoginGlobal.css';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import { TOKEN_POST, USER_GET } from '../../api';
 import { UserContext } from '../../UserContext';
 
 const schema = yup
@@ -28,13 +27,13 @@ const Login = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const { userLogin } = React.useContext(UserContext);
 
   // Função resposável pelo login
   const handleLogin = async () => {
     await userLogin(username, password);
   };
+
   return (
     <section className="login">
       <div>
