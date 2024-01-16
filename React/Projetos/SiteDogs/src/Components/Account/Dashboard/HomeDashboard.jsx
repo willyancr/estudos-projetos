@@ -6,7 +6,9 @@ const Dashboard = () => {
   return (
     <>
       <HeaderDashboard title="Minha Conta" />
-      <div className="dashboardMain"></div>
+      <section className="dashboardMain container efeito">
+        <div># HOME #</div>
+      </section>
     </>
   );
 };

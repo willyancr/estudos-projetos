@@ -14,13 +14,11 @@ const Header = () => {
         </Link>
         {data ? (
           <Link to="/conta" className={styles.login}>
-            {data.username} {' '}
-            <i className="fa-solid fa-user"></i>
+            {data.username} <i className="fa-solid fa-user"></i>
           </Link>
         ) : (
           <Link to="/login" className={styles.login}>
-            Login / Criar {' '}
-            <i className="fa-solid fa-user"></i>
+            Login / Criar <i className="fa-solid fa-user"></i>
           </Link>
         )}
       </nav>

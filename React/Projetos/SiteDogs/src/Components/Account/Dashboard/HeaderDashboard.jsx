@@ -12,9 +12,9 @@ const HeaderDashboard = ({ title }) => {
     ],
     [],
   );
-  const [selectedIcon, setSelectionIcon] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const [selectedIcon, setSelectionIcon] = useState(null);
   const { data, userLogout } = React.useContext(UserContext);
 
   // Define o estado selectedIcon com base na localização atual
@@ -26,7 +26,8 @@ const HeaderDashboard = ({ title }) => {
   }, [location, icons]);
 
   // Manipula o evento de clique nos ícones
-  function handleIconClick(to) {
+  function handleIconClick(to, event) {
+    // event.preventDefault();
     if (to === '/login') {
       if (data) {
         userLogout();
@@ -49,7 +50,7 @@ const HeaderDashboard = ({ title }) => {
             <Link
               key={item.icon}
               to={item.to}
-              onClick={() => handleIconClick(index, item.to)}
+              onClick={() => handleIconClick(item.to)}
             >
               <span
                 className={`${
@@ -62,9 +63,7 @@ const HeaderDashboard = ({ title }) => {
           ))}
           {data && (
             <Link to="/login" onClick={() => handleIconClick('/login')}>
-              <span
-                className={`${selectedIcon ? 'dashboardIcon selected' : ''} `}
-              >
+              <span>
                 <i className={`fa-solid fa-right-from-bracket`}></i>
               </span>
             </Link>

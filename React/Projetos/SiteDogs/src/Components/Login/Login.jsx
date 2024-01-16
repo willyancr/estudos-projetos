@@ -1,6 +1,6 @@
 import './LoginGlobal.css';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -27,15 +27,11 @@ const Login = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { userLogin, data, error } = React.useContext(UserContext);
-  const navigate = useNavigate();
+  const { userLogin, data, error, loading } = React.useContext(UserContext);
 
   // Função resposável pelo login
   const handleLogin = async () => {
     await userLogin(username, password);
-    if (data) {
-      navigate('/conta');
-    }
   };
 
   return (
@@ -52,6 +48,7 @@ const Login = () => {
           <span></span>Login
         </h1>
 
+        {/* Usuário */}
         <label htmlFor="usuario">Usuário</label>
         <Input
           register={register}
@@ -62,6 +59,7 @@ const Login = () => {
         />
         <p className="messageForm">{errors.usuario?.message}</p>
 
+        {/* Senha */}
         <label htmlFor="password">Senha</label>
         <Input
           register={register}
@@ -72,8 +70,14 @@ const Login = () => {
         />
         <p className="messageForm">{errors.password?.message}</p>
 
-        <Button name="Entrar" type="submit" />
-        {error && <p style={{color:'red'}}>Usuário ou Senha invalida</p>}
+        {/* Botão */}
+        {loading ? (
+          <Button name="Carregando..." disabled />
+        ) : (
+          <Button name="Entrar" type="submit" />
+        )}
+
+        {error && <p style={{ color: 'red' }}>Usuário ou Senha invalida</p>}
 
         <Link to="/login/perdeu" className="lostPassaword">
           <p>Perdeu a Senha?</p>

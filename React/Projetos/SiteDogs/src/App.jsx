@@ -7,7 +7,7 @@ import Footer from './Components/Footer/Footer';
 import Login from './Components/Login/Login';
 import LostPassword from './Components/Login/LostPassword';
 import Register from './Components/Login/Register';
-import Dashboard from './Components/Account/Dashboard/Dashboard';
+import Dashboard from './Components/Account/Dashboard/HomeDashboard';
 import Statistics from './Components/Account/Dashboard/Statistics';
 import PostPhoto from './Components/Account/Dashboard/PostPhoto';
 import Modal from './Components/Home/Modal';
