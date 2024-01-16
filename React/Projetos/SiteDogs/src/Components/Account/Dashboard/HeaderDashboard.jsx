@@ -7,7 +7,7 @@ const HeaderDashboard = ({ title }) => {
       { icon: 'fa-house', to: '/conta' },
       { icon: 'fa-chart-simple', to: '/conta/estatisticas' },
       { icon: 'fa-plus fa-lg', to: '/conta/postar' },
-      { icon: 'fa-right-from-bracket', to: '/conta' },
+      { icon: 'fa-right-from-bracket', to: '/login' },
     ],
     [],
   );

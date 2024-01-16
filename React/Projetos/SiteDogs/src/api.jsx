@@ -14,6 +14,19 @@ export const TOKEN_POST = (body) => {
   };
 };
 
+// Verifica se o token é valido.
+export const TOKEN_VALIDATE_POST = (token) => {
+  return {
+    url: url + '/jwt-auth/v1/token/validate',
+    options: {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    },
+  };
+};
+
 //Gera um objeto de configuração de requisição GET para recuperar os dados do usuário.
 export const USER_GET = (token) => {
   return {
