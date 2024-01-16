@@ -25,7 +25,7 @@ export const UserStorage = ({ children }) => {
           if (!response.ok) throw new Error('Token inválido');
           await getUser(token); // Obter os dados do usuário usando o token
         } catch (error) {
-          console.log(error);
+          userLogout();
         } finally {
           setLoading(false);
         }
@@ -45,11 +45,22 @@ export const UserStorage = ({ children }) => {
   }
   //Faz a autenticação de um usuário com o nome de usuário e senha fornecidos.
   async function userLogin(username, password) {
-    const { url, options } = TOKEN_POST({ username, password });
-    const response = await fetch(url, options);
-    const { token } = await response.json(); // Faz o parse da resposta JSON para obter o token.
-    window.localStorage.setItem('token', token);
-    getUser(token);
+    try {
+      setError(null);
+      setLoading(true);
+      // Obter o token
+      const { url, options } = TOKEN_POST({ username, password });
+      const response = await fetch(url, options);
+      if (!response.ok) throw new Error(`Error: ${response.statusText}`);
+      const { token } = await response.json(); // Faz o parse da resposta JSON para obter o token.
+      window.localStorage.setItem('token', token);
+      await getUser(token);
+    } catch (err) {
+      setError(err.message);
+      setLogin(false);
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function userLogout() {
@@ -58,7 +69,6 @@ export const UserStorage = ({ children }) => {
     setLoading(false);
     setError(null);
     window.localStorage.removeItem('token');
-    window.location.reload();
   }
 
   return (

@@ -1,20 +1,23 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../../UserContext';
 
 const HeaderDashboard = ({ title }) => {
+  //uso do memo para memorizar os icones
   const icons = useMemo(
     () => [
       { icon: 'fa-house', to: '/conta' },
       { icon: 'fa-chart-simple', to: '/conta/estatisticas' },
       { icon: 'fa-plus fa-lg', to: '/conta/postar' },
-      { icon: 'fa-right-from-bracket', to: '/login' },
     ],
     [],
   );
   const [selectedIcon, setSelectionIcon] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const { data, userLogout } = React.useContext(UserContext);
 
+  // Define o estado selectedIcon com base na localização atual
   useEffect(() => {
     const currentIcon = icons.findIndex(
       (icon) => icon.to === location.pathname,
@@ -22,9 +25,17 @@ const HeaderDashboard = ({ title }) => {
     setSelectionIcon(currentIcon);
   }, [location, icons]);
 
-  function handleIconClick(to, event) {
-    event.preventDefault();
-    navigate(to);
+  // Manipula o evento de clique nos ícones
+  function handleIconClick(to) {
+    if (to === '/login') {
+      if (data) {
+        userLogout();
+      } else {
+        navigate(to);
+      }
+    } else {
+      navigate(to);
+    }
   }
   return (
     <section className="container">
@@ -38,7 +49,7 @@ const HeaderDashboard = ({ title }) => {
             <Link
               key={item.icon}
               to={item.to}
-              onClick={(event) => handleIconClick(index, item.to, event)}
+              onClick={() => handleIconClick(index, item.to)}
             >
               <span
                 className={`${
@@ -49,6 +60,15 @@ const HeaderDashboard = ({ title }) => {
               </span>
             </Link>
           ))}
+          {data && (
+            <Link to="/login" onClick={() => handleIconClick('/login')}>
+              <span
+                className={`${selectedIcon ? 'dashboardIcon selected' : ''} `}
+              >
+                <i className={`fa-solid fa-right-from-bracket`}></i>
+              </span>
+            </Link>
+          )}
         </nav>
       </div>
     </section>

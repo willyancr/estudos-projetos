@@ -1,6 +1,6 @@
 import './LoginGlobal.css';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -27,11 +27,15 @@ const Login = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { userLogin } = React.useContext(UserContext);
+  const { userLogin, data, error } = React.useContext(UserContext);
+  const navigate = useNavigate();
 
   // Função resposável pelo login
   const handleLogin = async () => {
     await userLogin(username, password);
+    if (data) {
+      navigate('/conta');
+    }
   };
 
   return (
@@ -69,6 +73,7 @@ const Login = () => {
         <p className="messageForm">{errors.password?.message}</p>
 
         <Button name="Entrar" type="submit" />
+        {error && <p style={{color:'red'}}>Usuário ou Senha invalida</p>}
 
         <Link to="/login/perdeu" className="lostPassaword">
           <p>Perdeu a Senha?</p>
