@@ -1,5 +1,5 @@
 import React from 'react';
-import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from './api';
+import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET, USER_POST } from './api';
 import { useNavigate } from 'react-router-dom';
 
 export const UserContext = React.createContext();
@@ -76,7 +76,14 @@ export const UserStorage = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ userLogin, userLogout, data, login, error, loading }}
+      value={{
+        userLogin,
+        userLogout,
+        data,
+        login,
+        error,
+        loading,
+      }}
     >
       {children}
     </UserContext.Provider>

@@ -4,15 +4,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import { USER_POST } from '../../api';
 
 const schema = yup
   .object({
-    usuario: yup.string().required('Usuário obrigatório'),
+    username: yup.string().required('Usuário obrigatório'),
     email: yup.string().email('Email inválido').required('Email obrigatório'),
     password: yup
       .string()
       .required('Senha obrigatória')
-      .min(6, 'No mínimo 6 digitos'),
+      .min(3, 'No mínimo 3 digitos'),
   })
   .required();
 
@@ -23,8 +24,14 @@ const Register = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  function onSubmit(event) {
-    console.log(event);
+  const [username, setUsername] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  async function handleRegister() {
+    const { url, options } = USER_POST({ username, email, password });
+    const response = await fetch(url, options);
+    console.log(response);
   }
 
   return (
@@ -37,20 +44,45 @@ const Register = () => {
         />
       </div>
 
-      <form className="loginForm efeito" onSubmit={handleSubmit(onSubmit)}>
-        <h1 className='title'>
+      <form
+        className="loginForm efeito"
+        onSubmit={handleSubmit(handleRegister)}
+      >
+        <h1 className="title">
           <span></span>Cadastre-se
         </h1>
-        <label htmlFor="usuario">Usuário</label>
-        <Input register={register} type="text" id="usuario" />
+
+        {/* Usuário */}
+        <label htmlFor="username">Usuário</label>
+        <Input
+          register={register}
+          type="text"
+          id="username"
+          value={username}
+          onChange={({ target }) => setUsername(target.value)}
+        />
         <p className="messageForm">{errors.usuario?.message}</p>
 
+        {/* Email */}
         <label htmlFor="email">Email</label>
-        <Input register={register} type="text" id="email" />
+        <Input
+          register={register}
+          type="text"
+          id="email"
+          value={email}
+          onChange={({ target }) => setEmail(target.value)}
+        />
         <p className="messageForm">{errors.email?.message}</p>
 
+        {/* Senha */}
         <label htmlFor="password">Senha</label>
-        <Input register={register} type="password" id="password" />
+        <Input
+          register={register}
+          id="password"
+          type="password"
+          value={password}
+          onChange={({ target }) => setPassword(target.value)}
+        />
         <p className="messageForm">{errors.password?.message}</p>
 
         <Button name="Cadastrar" type="submit" />

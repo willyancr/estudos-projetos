@@ -27,7 +27,7 @@ const Login = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { userLogin, data, error, loading } = React.useContext(UserContext);
+  const { userLogin, error, loading } = React.useContext(UserContext);
 
   // Função resposável pelo login
   const handleLogin = async () => {
