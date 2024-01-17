@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import { USER_POST } from '../../api';
+import { UserContext } from '../../UserContext';
 
 const schema = yup
   .object({
@@ -27,10 +28,12 @@ const Register = () => {
   const [username, setUsername] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const { userLogin, loading } = React.useContext(UserContext);
 
   async function handleRegister() {
     const { url, options } = USER_POST({ username, email, password });
     const response = await fetch(url, options);
+    if (response.ok) userLogin(username, password);
     console.log(response);
   }
 
@@ -85,7 +88,11 @@ const Register = () => {
         />
         <p className="messageForm">{errors.password?.message}</p>
 
-        <Button name="Cadastrar" type="submit" />
+        {loading ? (
+          <Button name="Cadastrando..." disabled />
+        ) : (
+          <Button name="Cadastrar" type="submit" />
+        )}
       </form>
     </section>
   );
