@@ -55,9 +55,9 @@ export const UserStorage = ({ children }) => {
       const response = await fetch(url, options);
       if (!response.ok) throw new Error(`Error: ${response.statusText}`);
       const { token } = await response.json(); // Faz o parse da resposta JSON para obter o token.
-      window.localStorage.setItem('token', token);
-      await getUser(token);
-      navigate('/conta');
+      window.localStorage.setItem('token', token); // Armazena o token no armazenamento local.
+      await getUser(token); // Obtém os detalhes do usuário usando o token.
+      navigate('/conta'); // Navega para a página da conta.
     } catch (err) {
       setError(err.message);
       setLogin(false);
