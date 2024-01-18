@@ -6,6 +6,7 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import { USER_POST } from '../../api';
 import { UserContext } from '../../UserContext';
+import useFetch from '../../Hooks/useFetch';
 
 const schema = yup
   .object({
@@ -28,11 +29,12 @@ const Register = () => {
   const [username, setUsername] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const { userLogin, loading } = React.useContext(UserContext);
+  const { userLogin } = React.useContext(UserContext);
+  const { error, loading, request } = useFetch();
 
   async function handleRegister() {
     const { url, options } = USER_POST({ username, email, password });
-    const response = await fetch(url, options);
+    const { response } = await request(url, options);
     if (response.ok) userLogin(username, password);
     console.log(response);
   }
@@ -63,7 +65,7 @@ const Register = () => {
           value={username}
           onChange={({ target }) => setUsername(target.value)}
         />
-        <p className="messageForm">{errors.usuario?.message}</p>
+        <p className="messageForm">{errors.username?.message}</p>
 
         {/* Email */}
         <label htmlFor="email">Email</label>
@@ -92,6 +94,7 @@ const Register = () => {
         ) : (
           <Button name="Cadastrar" type="submit" />
         )}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>
     </section>
   );

@@ -10,7 +10,7 @@
   object-fit: cover;
 }
 .loginForm{
-  margin-top: 10rem;
+  margin-top: 7rem;
   padding: 2rem;
 }
 .loginForm label{
@@ -20,6 +20,9 @@
 }
 .loginForm Input{
   width: 80%;
+}
+.loginForm Button{
+  margin-bottom: .5rem;
 }
 .lostPassaword p{
   color: #898989;
