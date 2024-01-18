@@ -46,10 +46,9 @@ const Register = () => {
           className="responsiveImageLogin"
         />
       </div>
-
       <form
-        className="loginForm efeito"
         onSubmit={handleSubmit(handleRegister)}
+        className="loginForm efeito"
       >
         <h1 className="title">
           <span></span>Cadastre-se

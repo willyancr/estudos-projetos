@@ -1,16 +1,16 @@
 import './LoginGlobal.css';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { UserContext } from '../../UserContext';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import { UserContext } from '../../UserContext';
 
 const schema = yup
   .object({
-    usuario: yup.string().required('Usuário obrigatório'),
+    username: yup.string().required('Usuário obrigatório'),
     password: yup
       .string()
       .required('Senha obrigatória')
@@ -43,16 +43,16 @@ const Login = () => {
           className="responsiveImageLogin"
         />
       </div>
-      <form onSubmit={handleSubmit(handleLogin)} className={'loginForm efeito'}>
+      <form onSubmit={handleSubmit(handleLogin)} className="loginForm efeito">
         <h1 className="title">
           <span></span>Login
         </h1>
 
         {/* Usuário */}
-        <label htmlFor="usuario">Usuário</label>
+        <label htmlFor="username">Usuário</label>
         <Input
           register={register}
-          id="usuario"
+          id="username"
           type="text"
           value={username}
           onChange={({ target }) => setUsername(target.value)}
