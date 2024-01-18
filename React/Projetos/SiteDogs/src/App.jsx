@@ -12,6 +12,7 @@ import Statistics from './Components/Account/Dashboard/Statistics';
 import PostPhoto from './Components/Account/Dashboard/PostPhoto';
 import Modal from './Components/Home/Modal';
 import { UserStorage } from './UserContext';
+import ProtectedRoute from './Helper/ProtectedRoute';
 
 const App = () => {
   return (
@@ -20,12 +21,12 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+  <Route path="/login" element={<Login />} />
           <Route path="/login/perdeu" element={<LostPassword />} />
           <Route path="/login/cadastrar" element={<Register />} />
-          <Route path="/conta" element={<Dashboard />} />
-          <Route path="/conta/estatisticas" element={<Statistics />} />
-          <Route path="/conta/postar" element={<PostPhoto />} />
+          <Route path="/conta" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/conta/estatisticas" element={<ProtectedRoute><Statistics /></ProtectedRoute>} />
+          <Route path="/conta/postar" element={<ProtectedRoute><PostPhoto /></ProtectedRoute>} />
           <Route path="/modal" element={<Modal />} />
         </Routes>
         <Footer />
