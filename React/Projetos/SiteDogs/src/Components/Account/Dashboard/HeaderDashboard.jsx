@@ -26,8 +26,7 @@ const HeaderDashboard = ({ title }) => {
   }, [location, icons]);
 
   // Manipula o evento de clique nos ícones
-  function handleIconClick(to, event) {
-    // event.preventDefault();
+  function handleIconClick(to) {
     if (to === '/login') {
       if (data) {
         userLogout();
@@ -41,10 +40,13 @@ const HeaderDashboard = ({ title }) => {
   return (
     <section className="container">
       <div className="dashboardHeader">
+        {/* Title */}
         <h1 className="title">
           <span></span>
           {title}
         </h1>
+
+        {/* Icones */}
         <nav className="dashboardIcons">
           {icons.map((item, index) => (
             <Link
@@ -61,6 +63,7 @@ const HeaderDashboard = ({ title }) => {
               </span>
             </Link>
           ))}
+          {/* Icone de logout */}
           {data && (
             <Link to="/login" onClick={() => handleIconClick('/login')}>
               <span>
