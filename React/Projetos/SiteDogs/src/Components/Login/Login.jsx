@@ -57,7 +57,7 @@ const Login = () => {
           value={username}
           onChange={({ target }) => setUsername(target.value)}
         />
-        <p className="messageForm">{errors.usuario?.message}</p>
+        <p className="messageForm">{errors.username?.message}</p>
 
         {/* Senha */}
         <label htmlFor="password">Senha</label>
