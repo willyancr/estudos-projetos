@@ -38,3 +38,69 @@
 .dashboardIcon i{
   color: #fb1;
 }
+.mobileMenuIcon{
+  display: none;
+  background: #d9dbda;
+  border: .1px solid white;
+  width: 2.8rem;
+  padding: .6rem ;
+  border-radius: .3rem;
+  cursor: pointer;
+  text-align: center;
+}
+.mobileMenuIcon i{
+  transition: .2s ease;
+}
+.mobileMenuIconActive i{
+  transform: rotate(90deg);
+  transition: .2s ease;
+}
+.mobileMenuIcon i, .mobileMenu i{
+  color: #333;
+}
+.mobileMenu{
+  background: #d9dbda;
+  width: 2.8rem;
+  padding: .6rem ;
+  border-radius: .3rem;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 10rem;
+  right: 1rem;
+  animation: scaleUp .5s ease;
+  display: none;
+}
+.mobileMenu li{
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.mobileMenu i:hover{
+  background: #d9dbda;
+  scale: 1.3;
+  transition: .1s ease;
+}
+
+@keyframes scaleUp{
+  from{
+    opacity: 0;
+    transform: translate3d(0,-20px, 0);
+  }
+  to{
+      opacity: 1;
+      transform: translate3d(0,0,0);
+  }
+}
+@media screen and (max-width: 40rem) {
+  .dashboardIcons{
+    display: none;
+  }
+  .mobileMenuIcon{
+    display: block;
+  }
+  .mobileMenu{
+    display: block;
+  }
+}

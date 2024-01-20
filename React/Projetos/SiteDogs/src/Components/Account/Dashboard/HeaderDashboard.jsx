@@ -15,6 +15,7 @@ const HeaderDashboard = ({ title }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedIcon, setSelectionIcon] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { data, userLogout } = React.useContext(UserContext);
 
   // Define o estado selectedIcon com base na localização atual
@@ -36,6 +37,11 @@ const HeaderDashboard = ({ title }) => {
     } else {
       navigate(to);
     }
+    setMobileMenuOpen(false); // Fechar o menu mobile ao clicar
+  }
+
+  function handleMobileMenuClick() {
+    setMobileMenuOpen(!mobileMenuOpen);
   }
   return (
     <section className="container">
@@ -72,6 +78,37 @@ const HeaderDashboard = ({ title }) => {
             </Link>
           )}
         </nav>
+        {/* icone para abrir/fechar o menu mobile */}
+        <div
+          className={`mobileMenuIcon ${
+            mobileMenuOpen ? 'mobileMenuIconActive' : ''
+          } `}
+          onClick={handleMobileMenuClick}
+        >
+          <i className={`fa-solid fa-bars`}></i>
+        </div>
+
+        {/* Menu mobile */}
+        {mobileMenuOpen && (
+          <div className="mobileMenu">
+            <ul>
+              {icons.map((item) => (
+                <li key={item.icon}>
+                  <Link to={item.to} onClick={() => handleIconClick(item.to)}>
+                    <i className={`fa-solid ${item.icon}`}></i>
+                  </Link>
+                </li>
+              ))}
+              {data && (
+                <Link to="/login" onClick={() => handleIconClick('/login')}>
+                  <span>
+                    <i className={`fa-solid fa-right-from-bracket`}></i>
+                  </span>
+                </Link>
+              )}
+            </ul>
+          </div>
+        )}
       </div>
     </section>
   );
