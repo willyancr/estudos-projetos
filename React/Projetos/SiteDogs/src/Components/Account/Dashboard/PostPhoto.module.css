@@ -3,8 +3,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 }
+.inputFile{
+  margin-top: 1rem;
+}
 .mainForm Input{
-  margin-bottom: 1rem;
   width: 100%;
 }
 .mainForm span{
