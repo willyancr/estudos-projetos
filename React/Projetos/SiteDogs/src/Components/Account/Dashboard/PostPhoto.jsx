@@ -24,22 +24,24 @@ const PostPhoto = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const [nome, setName] = React.useState('');
+  const [nome, setNome] = React.useState('');
   const [peso, setPeso] = React.useState('');
   const [idade, setIdade] = React.useState('');
   const [img, setImg] = React.useState({});
   const { error, loading, request, data } = useFetch();
 
-  function handlePost(event) {
-    event.preventDefault();
+  //Manipula o evento de envio do formulário
+  function handlePost() {
+    // Cria um novo objeto FormData para armazenar os dados do formulário
     const formData = new FormData();
     formData.append('img', img.raw);
-    formData.append('nome', nome);
+    formData.append('nome', nome.value);
     formData.append('peso', peso);
     formData.append('idade', idade);
 
     const token = window.localStorage.getItem('token');
     const { url, options } = PHOTO_POST(formData, token);
+    // Faz uma requisição usando a URL e as opções obtidas da função PHOTO_POST
     request(url, options);
   }
 
@@ -60,7 +62,7 @@ const PostPhoto = () => {
             id="nome"
             type="text"
             value={nome}
-            onChange={(e) => setName(e.target.value)}
+            onChange={({ target }) => setNome(target.value)}
           />
           <p className="messageForm">{errors.nome?.message}</p>
 
@@ -69,20 +71,22 @@ const PostPhoto = () => {
             Peso <span>(kg)</span>
           </label>
           <Input
-            type="number"
+            register={register}
+            type="text"
             id="peso"
             value={peso}
-            onChange={(e) => setPeso(e.target.value)}
+            onChange={({ target }) => setPeso(target.value)}
           />
           <p className="messageForm">{errors.peso?.message}</p>
 
           {/* Idade */}
           <label htmlFor="idade">Idade</label>
           <Input
-            type="number"
+            register={register}
+            type="text"
             id="idade"
             value={idade}
-            onChange={(e) => setIdade(e.target.value)}
+            onChange={({ target }) => setIdade(target.value)}
           />
           <p className="messageForm">{errors.idade?.message}</p>
 
