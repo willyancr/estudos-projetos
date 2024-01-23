@@ -1,0 +1,37 @@
+.home{
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+}
+.ulFeed{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.ulFeed img{
+  border-radius: .3rem;
+}
+.ulFeed img:hover{
+ opacity: .8;
+}
+.imageDogsFeed{
+  display: grid;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.imageDogsFeed:nth-child(2){
+  grid-column: 2 / 4;
+  grid-row: span 2;
+}
+.imageDogsFeed:hover .views {
+  opacity: 1;
+}
+.views{
+  position: absolute;
+  color: white;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  transition: opacity 0.2s ease;
+}
