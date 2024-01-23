@@ -2,26 +2,31 @@ import React, { useState } from 'react';
 import styles from './Home.module.css';
 import Modal from './Modal';
 
-const Home = () => {
-  const images = [
-    { src: '../image/dog.jpg', views: Math.random() * 1000 },
-    { src: '../image/dog.jpg', views: Math.random() * 1000 },
-    { src: '../image/dog.jpg', views: Math.random() * 1000 },
-    { src: '../image/dog.jpg', views: Math.random() * 1000 },
-    { src: '../image/dog.jpg', views: Math.random() * 1000 },
-    { src: '../image/dog.jpg', views: Math.random() * 1000 },
-  ];
-  const [showModal, setShowModal] = useState(false);
-  const [selectdedViews, setSelectdedViews] = useState(null);
+// Componente Home que exibe uma lista de imagens de cachorros com visualizações
 
+const Home = () => {
+  // array de objetos de imagem com src e número aleatório de visualizações
+  const images = Array.from({ length: 6 }, () => ({
+    src: '../image/dog.jpg',
+    views: Math.random() * 1000,
+  }));
+
+  // estado para controlar a visibilidade do modal e as visualizações selecionadas
+  const [showModal, setShowModal] = useState(false);
+  const [selectedViews, setSelectedViews] = useState(null);
+
+  // função para lidar com o clique em uma imagem e mostrar o modal com visualizações
   function handleClickImage(views) {
     setShowModal(true);
-    setSelectdedViews(views);
+    setSelectedViews(views);
   }
+
+  // função para lidar com o fechamento do modal
   function handleCloseImage() {
     setShowModal(false);
   }
 
+  // renderizar a lista de imagens com visualizações
   return (
     <section>
       <div className={`${styles.home} container efeito`}>
@@ -43,7 +48,9 @@ const Home = () => {
           ))}
         </ul>
       </div>
-      {showModal && <Modal onClose={handleCloseImage} views={selectdedViews.toFixed(0)} />}
+      {showModal && (
+        <Modal onClose={handleCloseImage} views={selectedViews.toFixed(0)} />
+      )}
     </section>
   );
 };

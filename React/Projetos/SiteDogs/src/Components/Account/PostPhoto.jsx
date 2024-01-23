@@ -1,13 +1,13 @@
 import React from 'react';
 import HeaderDashboard from './HeaderDashboard';
-import Button from '../../Button/Button';
-import Input from '../../Input/Input';
+import Button from '../Button/Button';
+import Input from '../Input/Input';
 import styles from './PostPhoto.module.css';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
-import useFetch from '../../../Hooks/useFetch';
-import { PHOTO_POST } from '../../../api';
+import useFetch from '../../Hooks/useFetch';
+import { PHOTO_POST } from '../../api';
 import { useNavigate } from 'react-router-dom';
 
 const schema = yup

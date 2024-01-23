@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { UserContext } from '../../../UserContext';
+import { UserContext } from '../../UserContext';
 
 const HeaderDashboard = ({ title }) => {
   //uso do memo para memorizar os icones
