@@ -1,6 +1,6 @@
 import styles from './Modal.module.css';
 
-const Modal = ({ onClose, views }) => {
+const Modal = ({ onClose, views, photo }) => {
   function handleModalClick(e) {
     e.stopPropagation(); // Impedir que o clique se propague para o conteúdo do modal
   }
@@ -8,7 +8,7 @@ const Modal = ({ onClose, views }) => {
     <div onClick={onClose} className={styles.modal}>
       <div onClick={handleModalClick} className={styles.modalContainer}>
         <div className={styles.modalImg}>
-          <img src="../image/dog.jpg" alt="" />
+          <img src={photo} alt="" />
         </div>
         <div className={styles.modalForm}>
           <p className={styles.modalViews}>
