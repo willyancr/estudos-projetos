@@ -8,6 +8,7 @@ import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import useFetch from '../../../Hooks/useFetch';
 import { PHOTO_POST } from '../../../api';
+import { useNavigate } from 'react-router-dom';
 
 const schema = yup
   .object({
@@ -29,6 +30,13 @@ const PostPhoto = () => {
   const [idade, setIdade] = React.useState('');
   const [img, setImg] = React.useState({});
   const { error, loading, request, data } = useFetch();
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (data) {
+      navigate('/conta');
+    }
+  }, [data, navigate]);
 
   //Manipula o evento de envio do formulário
   function handlePost() {
@@ -45,10 +53,12 @@ const PostPhoto = () => {
     request(url, options);
   }
 
+  //Função para lidar com a mudança de entrada de imagem
   function handleImg({ target }) {
+    // Define a visualização da imagem e os dados brutos
     setImg({
-      preview: URL.createObjectURL(target.files[0]),
-      raw: target.files[0],
+      preview: URL.createObjectURL(target.files[0]), // Cria uma URL de visualização a partir do arquivo selecionado
+      raw: target.files[0], // Define os dados brutos do arquivo
     });
   }
   return (
@@ -107,6 +117,7 @@ const PostPhoto = () => {
           )}
           {error && <p style={{ color: 'red' }}>{error}</p>}
         </form>
+        {/* Cria uma visualização da imagem */}
         <div>
           {img.preview && (
             <div
