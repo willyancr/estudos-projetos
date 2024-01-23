@@ -12,8 +12,8 @@ import { PHOTO_POST } from '../../../api';
 const schema = yup
   .object({
     nome: yup.string().required('Nome obrigatório'),
-    peso: yup.number().required('Peso obrigatório'),
-    idade: yup.number().required('Idade obrigatório'),
+    peso: yup.string().required('Peso obrigatório'),
+    idade: yup.string().required('Idade obrigatório'),
   })
   .required();
 
@@ -35,7 +35,7 @@ const PostPhoto = () => {
     // Cria um novo objeto FormData para armazenar os dados do formulário
     const formData = new FormData();
     formData.append('img', img.raw);
-    formData.append('nome', nome.value);
+    formData.append('nome', nome);
     formData.append('peso', peso);
     formData.append('idade', idade);
 
@@ -47,6 +47,7 @@ const PostPhoto = () => {
 
   function handleImg({ target }) {
     setImg({
+      preview: URL.createObjectURL(target.files[0]),
       raw: target.files[0],
     });
   }
@@ -72,7 +73,7 @@ const PostPhoto = () => {
           </label>
           <Input
             register={register}
-            type="text"
+            type="number"
             id="peso"
             value={peso}
             onChange={({ target }) => setPeso(target.value)}
@@ -83,7 +84,7 @@ const PostPhoto = () => {
           <label htmlFor="idade">Idade</label>
           <Input
             register={register}
-            type="text"
+            type="number"
             id="idade"
             value={idade}
             onChange={({ target }) => setIdade(target.value)}
@@ -98,10 +99,23 @@ const PostPhoto = () => {
             id="img"
             onChange={handleImg}
           />
-          <Button name="Enviar" type="submit" />
+
+          {loading ? (
+            <Button name="Enviando..." disabled />
+          ) : (
+            <Button name="Enviar" />
+          )}
+          {error && <p style={{ color: 'red' }}>{error}</p>}
         </form>
+        <div>
+          {img.preview && (
+            <div
+              className={styles.preview}
+              style={{ backgroundImage: `url('${img.preview}')` }}
+            ></div>
+          )}
+        </div>
       </section>
-      <div></div>
     </>
   );
 };
