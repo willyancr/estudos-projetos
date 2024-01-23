@@ -7,10 +7,10 @@ import Footer from './Components/Footer/Footer';
 import Login from './Components/Login/Login';
 import LostPassword from './Components/Login/LostPassword';
 import Register from './Components/Login/Register';
-import Dashboard from './Components/Account/Dashboard/HomeDashboard';
-import Statistics from './Components/Account/Dashboard/Statistics';
-import PostPhoto from './Components/Account/Dashboard/PostPhoto';
-import Modal from './Components/Home/Modal';
+import HomeDashboard from './Components/Account/HomeDashboard';
+import Statistics from './Components/Account/Statistics';
+import PostPhoto from './Components/Account/PostPhoto';
+import Modal from './Components/Feed/Modal';
 import { UserStorage } from './UserContext';
 import ProtectedRoute from './Helper/ProtectedRoute';
 
@@ -21,10 +21,10 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-  <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/login/perdeu" element={<LostPassword />} />
           <Route path="/login/cadastrar" element={<Register />} />
-          <Route path="/conta" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/conta" element={<ProtectedRoute><HomeDashboard /></ProtectedRoute>} />
           <Route path="/conta/estatisticas" element={<ProtectedRoute><Statistics /></ProtectedRoute>} />
           <Route path="/conta/postar" element={<ProtectedRoute><PostPhoto /></ProtectedRoute>} />
           <Route path="/modal" element={<Modal />} />

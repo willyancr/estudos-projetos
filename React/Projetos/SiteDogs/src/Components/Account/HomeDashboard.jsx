@@ -1,16 +1,17 @@
 import React from 'react';
 import './GlobalDashboard.css';
 import HeaderDashboard from './HeaderDashboard';
+import Feed from '../Feed/Feed';
 
-const Dashboard = () => {
+const HomeDashboard = () => {
   return (
     <>
       <HeaderDashboard title="Minha Conta" />
-      <section className="dashboardMain container efeito">
-        <div># HOME #</div>
+      <section className="efeito">
+        <Feed />
       </section>
     </>
   );
 };
 
-export default Dashboard;
+export default HomeDashboard;

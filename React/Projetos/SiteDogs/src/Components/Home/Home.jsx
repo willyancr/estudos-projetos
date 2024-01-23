@@ -1,10 +1,12 @@
 import React from 'react';
 import Feed from '../Feed/Feed';
+import styles from './Home.module.css';
 
 const Home = () => {
-  
   return (
-    <Feed />
+    <div className={styles.home}>
+      <Feed />
+    </div>
   );
 };
 

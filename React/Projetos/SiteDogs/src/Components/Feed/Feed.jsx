@@ -18,17 +18,16 @@ const Feed = () => {
     setShowModal(true);
     setSelectedViews(views);
   }
-
   // função para lidar com o fechamento do modal
   function handleCloseImage() {
     setShowModal(false);
   }
-
   // renderizar a lista de imagens com visualizações
   return (
     <section>
       <div className={`${styles.home} container efeito`}>
         <ul className={styles.ulFeed}>
+
           {images.map((image, index) => (
             <div
               onClick={() => handleClickImage(image.views)}
@@ -44,11 +43,14 @@ const Feed = () => {
               </span>
             </div>
           ))}
+
         </ul>
       </div>
+
       {showModal && (
         <Modal onClose={handleCloseImage} views={selectedViews.toFixed(0)} />
       )}
+
     </section>
   );
 };
