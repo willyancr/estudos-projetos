@@ -61,6 +61,7 @@ const PostPhoto = () => {
       raw: target.files[0], // Define os dados brutos do arquivo
     });
   }
+
   return (
     <>
       <HeaderDashboard title="Poste sua foto" />
