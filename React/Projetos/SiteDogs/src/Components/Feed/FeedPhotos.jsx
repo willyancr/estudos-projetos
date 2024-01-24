@@ -1,23 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './FeedPhotos.module.css';
 import useFetch from '../../Hooks/useFetch';
 import { PHOTOS_GET } from '../../api';
 import FeedPhotoItem from './FeedPhotoItem';
-import Modal from './Modal';
 
-
-const FeedPhoto = () => {
-  // estado para controlar a visibilidade do modal e as visualizações selecionadas
-  const [modalInfo, setModalInfo] = useState({
-    showModal: false,
-    acessos: null,
-    photo: null,
-    idade: null,
-    peso: null,
-    autor: null,
-    titulo: null,
-  });
-
+const FeedPhoto = ({ setModalPhoto }) => {
   const { error, loading, request, data } = useFetch();
 
   React.useEffect(() => {
@@ -30,28 +17,8 @@ const FeedPhoto = () => {
     fetchPhotos();
   }, [request]);
 
-  // função para lidar com o clique em uma imagem e mostrar o modal com visualizações
-  function handleClickImage(photo) {
-    setModalInfo({
-      showModal: true,
-      acessos: photo.acessos,
-      photo: photo.src,
-      idade: photo.idade,
-      peso: photo.peso,
-      autor: photo.author,
-      titulo: photo.title,
-    });
-    console.log(photo)
-  }
-  // função para lidar com o fechamento do modal
-  function handleCloseImage() {
-    setModalInfo({
-      showModal: false,
-    });
-  }
   if (error) return <p>{error}</p>;
   if (loading) return <p>Carregando...</p>;
-  // renderizar a lista de imagens com visualizações
   return data ? (
     <section>
       <div className={`${styles.home} container efeito`}>
@@ -60,12 +27,11 @@ const FeedPhoto = () => {
             <FeedPhotoItem
               key={photo.id}
               photo={photo}
-              onClick={() => handleClickImage(photo)}
+              setModalPhoto={setModalPhoto}
             />
           ))}
         </ul>
       </div>
-      {modalInfo.showModal && <Modal onClose={handleCloseImage} {...modalInfo}/>}
     </section>
   ) : null;
 };

@@ -33,6 +33,7 @@
   font-size: 2.4rem;
   letter-spacing: .1rem;
   margin-bottom: 1rem;
+  text-decoration: none;
   z-index: 1;
 }
 .modalTitle span{

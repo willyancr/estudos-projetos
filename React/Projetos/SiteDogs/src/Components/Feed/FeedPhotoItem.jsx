@@ -1,9 +1,12 @@
 import React from 'react';
 import styles from './FeedPhotos.module.css';
 
-const FeedPhotoItem = ({ photo, onClick }) => {
+const FeedPhotoItem = ({ photo, setModalPhoto }) => {
+  function handleClick() {
+    setModalPhoto(photo);
+  }
   return (
-    <div onClick={onClick} className={styles.imageDogsFeed}>
+    <div onClick={handleClick} className={styles.imageDogsFeed}>
       <li>
         <img src={photo.src} alt={photo.title} />
       </li>
