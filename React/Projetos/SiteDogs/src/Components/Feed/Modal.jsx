@@ -12,7 +12,7 @@ const Modal = ({ onClose, acessos, photo, idade, peso, autor, titulo }) => {
         </div>
         <div className={styles.modalForm}>
           <p className={styles.modalViews}>
-            <a href="">{autor}</a>
+            <a href="">@{autor}</a>
             <span>
               <i className="fa-regular fa-eye"></i> {acessos}
             </span>

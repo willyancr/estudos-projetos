@@ -7,7 +7,7 @@
   left: 0;
   background: rgba(0,0,0,.4);
   z-index: 1000;
-  padding: 2rem calc(4rem + 15px) 2rem 4rem;
+  padding: 2rem; 
 }
 .modalContainer{
   display: grid;
@@ -104,4 +104,13 @@
     opacity: initial;
     transform: initial;
   }
+}
+
+@media screen and (max-width: 1024px) {
+  .modalContainer{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  
+  
 }
