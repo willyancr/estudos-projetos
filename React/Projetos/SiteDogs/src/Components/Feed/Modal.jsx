@@ -1,6 +1,6 @@
 import styles from './Modal.module.css';
 
-const Modal = ({ onClose, views, photo }) => {
+const Modal = ({ onClose, acessos, photo, idade, peso, autor, titulo }) => {
   function handleModalClick(e) {
     e.stopPropagation(); // Impedir que o clique se propague para o conteúdo do modal
   }
@@ -12,22 +12,22 @@ const Modal = ({ onClose, views, photo }) => {
         </div>
         <div className={styles.modalForm}>
           <p className={styles.modalViews}>
-            <a href="">@belinha</a>
+            <a href="">{autor}</a>
             <span>
-              <i className="fa-regular fa-eye"></i> {views}
+              <i className="fa-regular fa-eye"></i> {acessos}
             </span>
           </p>
           <h1 className={styles.modalTitle}>
-            <span></span>Belinha
+            <span></span>{titulo}
           </h1>
           <ul className={styles.modalDogInfos}>
-            <li>| 5 kg</li>
-            <li>| 09 anos</li>
+            <li>| {peso} kg</li>
+            <li>| {idade} anos</li>
           </ul>
         </div>
         <ul className={styles.modalComments}>
           <li>
-            <b>cat:</b>
+            <b>{autor}:</b>
             <span>Linda essa dogzinha</span>
           </li>
         </ul>
