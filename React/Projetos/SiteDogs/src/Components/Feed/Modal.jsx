@@ -20,7 +20,7 @@ const Modal = ({ onClose, photo }) => {
     <div onClick={onClose} className={styles.modal}>
       {error && <p>{error}</p>}
       {loading && <Loading />}
-      {data && <PhotoContent data={data} handleModalClick={handleModalClick}/>}
+      {data && <PhotoContent dados={data} handleModalClick={handleModalClick}/>}
     </div>
   );
 };
