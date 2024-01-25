@@ -1,11 +1,9 @@
 import React from 'react';
 import styles from './Modal.module.css';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../../UserContext';
 
 const PhotoContent = ({ handleModalClick, dados }) => {
   const { photo, comment } = dados;
-  const { data } = React.useContext(UserContext);
 
   return (
     <div onClick={handleModalClick} className={styles.modalContainer}>
@@ -15,22 +13,21 @@ const PhotoContent = ({ handleModalClick, dados }) => {
       </div>
       {/* Infos da imagem */}
       <div className={styles.modalForm}>
+        {/* Visualizacoes e autor */}
         <p className={styles.modalViews}>
-          {data.username === photo.author ? (
-            <button className={styles.delete}>deletar</button>
-          ) : (
-            <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
-          )}
+          <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
           <span>
             <i className="fa-regular fa-eye"></i> {photo.acessos}
           </span>
         </p>
+        {/* Titulo */}
         <h1>
           <Link to={`/foto/${photo.id}`} className={styles.modalTitle}>
             <span></span>
             {photo.title}
           </Link>
         </h1>
+        {/* Peso e Idade */}
         <ul className={styles.modalDogInfos}>
           <li>| {photo.peso} kg</li>
           <li>
@@ -38,12 +35,14 @@ const PhotoContent = ({ handleModalClick, dados }) => {
           </li>
         </ul>
       </div>
+      {/* Comentarios */}
       <ul className={styles.modalComments}>
         <li>
           <b>{photo.author}:</b>
           <span>Linda essa dogzinha</span>
         </li>
       </ul>
+      {/* Enviar comentario */}
       <form className={styles.modalSendMsg}>
         <textarea
           name="comment"
