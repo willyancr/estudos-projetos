@@ -3,10 +3,12 @@ import styles from './FeedPhotos.module.css';
 import useFetch from '../../Hooks/useFetch';
 import { PHOTOS_GET } from '../../api';
 import FeedPhotoItem from './FeedPhotoItem';
+import Loading from '../../Helper/Loading';
 
 const FeedPhoto = ({ setModalPhoto }) => {
   const { error, loading, request, data } = useFetch();
 
+  // Busca fotos ao montar o componente
   React.useEffect(() => {
     async function fetchPhotos() {
       const { url, options } = PHOTOS_GET({ page: 1, total: 6, user: 0 });
@@ -18,7 +20,7 @@ const FeedPhoto = ({ setModalPhoto }) => {
   }, [request]);
 
   if (error) return <p>{error}</p>;
-  if (loading) return <p>Carregando...</p>;
+  if (loading) return <Loading />;
   return data ? (
     <section>
       <div className={`${styles.home} container efeito`}>
