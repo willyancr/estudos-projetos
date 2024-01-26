@@ -15,8 +15,8 @@ const PhotoComment = ({ id, comments }) => {
     const { url, options } = COMMENT_POST(id, { comment });
     const { response, json } = await request(url, options);
     if (response.ok) {
-      setCommentsList(' ');
       setCommentsList((comments) => [...comments, json]);
+      setComment('');
     }
   }
   return (
@@ -25,7 +25,7 @@ const PhotoComment = ({ id, comments }) => {
       <ul className={styles.modalComments}>
         {commentsList.map((comment) => (
           <li key={comment.comment_ID}>
-            <b>{comment.comment_author}</b>
+            <b>{comment.comment_author}:</b>
             <span>{comment.comment_content}</span>
           </li>
         ))}
@@ -41,7 +41,6 @@ const PhotoComment = ({ id, comments }) => {
             onChange={({ target }) => setComment(target.value)}
             placeholder="Comente..."
           ></textarea>
-          {error}
           <button>
             <i className="fa-solid fa-square-arrow-up-right fa-2xl"></i>
           </button>
