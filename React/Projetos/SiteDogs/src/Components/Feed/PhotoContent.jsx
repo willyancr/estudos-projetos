@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './Modal.module.css';
 import { Link } from 'react-router-dom';
+import PhotoComment from './PhotoComment';
 
 const PhotoContent = ({ handleModalClick, dados }) => {
-  const { photo, comment } = dados;
+  const { photo, comments } = dados;
 
   return (
     <div onClick={handleModalClick} className={styles.modalContainer}>
@@ -35,22 +36,8 @@ const PhotoContent = ({ handleModalClick, dados }) => {
           </li>
         </ul>
       </div>
-      {/* Comentarios */}
-      <ul className={styles.modalComments}>
-        <li>
-          <b>{photo.author}:</b>
-          <span>Linda essa dogzinha</span>
-        </li>
-      </ul>
-      {/* Enviar comentario */}
-      <form className={styles.modalSendMsg}>
-        <textarea
-          name="comment"
-          id="comment"
-          placeholder="Comente..."
-        ></textarea>
-        <i className="fa-solid fa-square-arrow-up-right fa-2xl"></i>
-      </form>
+      {/* Componente de comentarios */}
+      <PhotoComment id={photo.id} comments={comments} />
     </div>
   );
 };
