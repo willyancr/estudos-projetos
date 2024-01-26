@@ -6,23 +6,26 @@ import useFetch from '../../Hooks/useFetch';
 import { Link } from 'react-router-dom';
 
 const PhotoComment = ({ id, comments }) => {
-  const [comment, setComment] = React.useState('');
-  const [commentsList, setCommentsList] = React.useState(() => comments);
-  const { login } = React.useContext(UserContext);
-  const { error, request } = useFetch();
 
+  const [comment, setComment] = React.useState(''); // Estado para os novos comentários
+  const [commentsList, setCommentsList] = React.useState(() => comments); // Estado para a lista de comentários
+  const { login } = React.useContext(UserContext);
+
+  const { error, request } = useFetch(); // Hook personalizado para fazer requisições à API
+
+  // Função de envio para adicionar novos comentários
   async function handleSubmit(e) {
     e.preventDefault();
     const { url, options } = COMMENT_POST(id, { comment });
     const { response, json } = await request(url, options);
     if (response.ok) {
-      setCommentsList((comments) => [...comments, json]);
+      setCommentsList((comments) => [...comments, json]); // Atualiza a lista de comentários com o novo comentário
       setComment('');
     }
   }
   return (
     <>
-      {/* Comentarios */}
+      {/* Exibe comentários */}
       <ul className={styles.modalComments}>
         {commentsList.map((comment) => (
           <li key={comment.comment_ID}>
@@ -32,7 +35,7 @@ const PhotoComment = ({ id, comments }) => {
         ))}
       </ul>
 
-      {/* Enviar comentario */}
+      {/* Formulário de input de comentário */}
       {login ? (
         <form onClick={handleSubmit} className={styles.modalSendMsg}>
           <textarea
@@ -53,8 +56,8 @@ const PhotoComment = ({ id, comments }) => {
             disabled
           ></textarea>
           <Link to="/login">
-            <button >
-            <i className="fa-solid fa-user fa-2xl"></i>
+            <button>
+              <i className="fa-solid fa-user fa-2xl"></i>
             </button>
           </Link>
         </form>
