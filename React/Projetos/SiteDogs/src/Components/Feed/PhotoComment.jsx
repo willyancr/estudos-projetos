@@ -3,6 +3,7 @@ import styles from './Modal.module.css';
 import { COMMENT_POST } from '../../api';
 import { UserContext } from '../../UserContext';
 import useFetch from '../../Hooks/useFetch';
+import { Link } from 'react-router-dom';
 
 const PhotoComment = ({ id, comments }) => {
   const [comment, setComment] = React.useState('');
@@ -32,7 +33,7 @@ const PhotoComment = ({ id, comments }) => {
       </ul>
 
       {/* Enviar comentario */}
-      {login && (
+      {login ? (
         <form onClick={handleSubmit} className={styles.modalSendMsg}>
           <textarea
             name="comment"
@@ -44,6 +45,18 @@ const PhotoComment = ({ id, comments }) => {
           <button>
             <i className="fa-solid fa-square-arrow-up-right fa-2xl"></i>
           </button>
+        </form>
+      ) : (
+        <form className={styles.modalSendMsg}>
+          <textarea
+            placeholder="Faça o login para comentar..."
+            disabled
+          ></textarea>
+          <Link to="/login">
+            <button >
+            <i className="fa-solid fa-user fa-2xl"></i>
+            </button>
+          </Link>
         </form>
       )}
     </>
