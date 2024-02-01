@@ -5,6 +5,7 @@
   border-radius: .2rem;
   cursor: pointer;
   display: block;
+  border: 1px solid transparent;
 }
 .delete:hover{
   border: .1px solid #fb1;
