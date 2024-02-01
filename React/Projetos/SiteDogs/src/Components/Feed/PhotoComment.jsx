@@ -6,12 +6,16 @@ import useFetch from '../../Hooks/useFetch';
 import { Link } from 'react-router-dom';
 
 const PhotoComment = ({ id, comments }) => {
-
   const [comment, setComment] = React.useState(''); // Estado para os novos comentários
   const [commentsList, setCommentsList] = React.useState(() => comments); // Estado para a lista de comentários
+  const commentSection = React.useRef(null);
   const { login } = React.useContext(UserContext);
 
-  const { error, request } = useFetch(); // Hook personalizado para fazer requisições à API
+  const { error, request } = useFetch();
+
+  React.useEffect(() => {
+    commentSection.current.scrollTop = commentSection.current.scrollHeight; // Rolagem automática da lista de comentários
+  }, [commentsList]);
 
   // Função de envio para adicionar novos comentários
   async function handleSubmit(e) {
@@ -26,7 +30,7 @@ const PhotoComment = ({ id, comments }) => {
   return (
     <>
       {/* Exibe comentários */}
-      <ul className={styles.modalComments}>
+      <ul ref={commentSection} className={styles.modalComments}>
         {commentsList.map((comment) => (
           <li key={comment.comment_ID}>
             <b>{comment.comment_author}:</b>
