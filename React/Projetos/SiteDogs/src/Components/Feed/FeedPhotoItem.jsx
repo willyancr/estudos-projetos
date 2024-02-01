@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './FeedPhotos.module.css';
 
+//Componente funcional para renderizar um item de foto no feed
 const FeedPhotoItem = ({ photo, setModalPhoto }) => {
   function handleClick() {
     setModalPhoto(photo);

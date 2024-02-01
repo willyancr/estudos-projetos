@@ -5,10 +5,11 @@ import { PHOTOS_GET } from '../../api';
 import FeedPhotoItem from './FeedPhotoItem';
 import Loading from '../../Helper/Loading';
 
+// Componente para exibir um feed de fotos
 const FeedPhoto = ({ setModalPhoto }) => {
   const { error, loading, request, data } = useFetch();
 
-  // Busca fotos ao montar o componente
+  // Buscar fotos quando o componente é montado
   React.useEffect(() => {
     async function fetchPhotos() {
       const { url, options } = PHOTOS_GET({ page: 1, total: 6, user: 0 });
@@ -21,6 +22,7 @@ const FeedPhoto = ({ setModalPhoto }) => {
 
   if (error) return <p>{error}</p>;
   if (loading) return <Loading />;
+  // Exibir feed de fotos
   return data ? (
     <section>
       <div className={`${styles.home} container efeito`}>

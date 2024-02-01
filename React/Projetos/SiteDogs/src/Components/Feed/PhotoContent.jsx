@@ -3,6 +3,7 @@ import styles from './Modal.module.css';
 import { Link } from 'react-router-dom';
 import PhotoComment from './PhotoComment';
 
+//// Este componente renderiza o conteúdo da foto com modal e detalhes
 const PhotoContent = ({ handleModalClick, dados }) => {
   const { photo, comments } = dados;
 
