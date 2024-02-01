@@ -2,10 +2,13 @@ import React from 'react';
 import styles from './Modal.module.css';
 import { Link } from 'react-router-dom';
 import PhotoComment from './PhotoComment';
+import { UserContext } from '../../UserContext';
+import PhotoDelete from './PhotoDelete';
 
 //// Este componente renderiza o conteúdo da foto com modal e detalhes
 const PhotoContent = ({ handleModalClick, dados }) => {
   const { photo, comments } = dados;
+  const { data } = React.useContext(UserContext);
 
   return (
     <div onClick={handleModalClick} className={styles.modalContainer}>
@@ -17,7 +20,11 @@ const PhotoContent = ({ handleModalClick, dados }) => {
       <div className={styles.modalForm}>
         {/* Visualizacoes e autor */}
         <p className={styles.modalViews}>
-          <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
+          {data && data.username === photo.author ? (
+            <PhotoDelete id={photo.id} />
+          ) : (
+            <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
+          )}
           <span>
             <i className="fa-regular fa-eye"></i> {photo.acessos}
           </span>

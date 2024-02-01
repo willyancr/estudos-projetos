@@ -46,17 +46,7 @@
   left: -7px;
   z-index: -1;
 }
-.delete{
-  font-size: small;
-  padding: .2rem .4rem;
-  border: none;
-  border-radius: .2rem;
-  cursor: pointer;
-  display: block;
-}
-.delete:hover{
-  border: .1px solid #fb1;
-}
+
 .modalViews {
   display: flex;
   align-items: center;
