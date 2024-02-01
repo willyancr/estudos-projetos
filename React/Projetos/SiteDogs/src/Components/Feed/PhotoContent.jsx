@@ -14,7 +14,7 @@ const PhotoContent = ({ handleModalClick, dados }) => {
     <div onClick={handleModalClick} className={styles.modalContainer}>
       {/* Imagem */}
       <div className={styles.modalImg}>
-        <img src={photo.src} alt="" />
+        <img src={photo.src} alt={photo.title} />
       </div>
       {/* Infos da imagem */}
       <div className={styles.modalForm}>
