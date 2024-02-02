@@ -8,7 +8,7 @@ const HomeDashboard = () => {
   return (
     <>
       <HeaderDashboard title="Minha Conta" />
-  <section className={`${styles.home} efeito`}>
+      <section className={`${styles.home} `}>
         <Feed />
       </section>
     </>
