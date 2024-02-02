@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 
 //Um componente de rota protegida que só renderiza seus filhos se o usuário estiver logado.
 //Se o usuário não estiver logado, ele redireciona para a página de login.
-//Se o usuário estiver logado, ele renderiza seus filhos.
+//Se o usuário estiver logado, ele renderiza seus filhos...
 const ProtectedRoute = ({ children }) => {
   const { login } = React.useContext(UserContext);
   
