@@ -2,7 +2,7 @@ import React from 'react';
 import FeedPhoto from './FeedPhotos';
 import Modal from './Modal';
 
-const Feed = () => {
+const Feed = ({user}) => {
   const [modalPhoto, setModalPhoto] = React.useState(null);
   return (
     <div>
@@ -11,7 +11,7 @@ const Feed = () => {
         <Modal photo={modalPhoto} onClose={() => setModalPhoto(null)} />
       )}
       {/* Componente para exibir fotos do feed */}
-      <FeedPhoto setModalPhoto={setModalPhoto} />
+      <FeedPhoto user={user} setModalPhoto={setModalPhoto} />
     </div>
   );
 };

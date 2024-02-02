@@ -6,19 +6,19 @@ import FeedPhotoItem from './FeedPhotoItem';
 import Loading from '../../Helper/Loading';
 
 // Componente para exibir um feed de fotos
-const FeedPhoto = ({ setModalPhoto }) => {
+const FeedPhoto = ({ setModalPhoto, user }) => {
   const { error, loading, request, data } = useFetch();
 
   // Buscar fotos quando o componente é montado
   React.useEffect(() => {
     async function fetchPhotos() {
-      const { url, options } = PHOTOS_GET({ page: 1, total: 6, user: 0 });
+      const { url, options } = PHOTOS_GET({ page: 1, total: 6, user });
       const { response, json } = await request(url, options);
       console.log(json);
       console.log(response);
     }
     fetchPhotos();
-  }, [request]);
+  }, [request, user]);
 
   if (error) return <p>{error}</p>;
   if (loading) return <Loading />;
