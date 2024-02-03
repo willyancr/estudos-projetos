@@ -9,13 +9,11 @@ import Loading from '../../Helper/Loading';
 const FeedPhoto = ({ setModalPhoto, user }) => {
   const { error, loading, request, data } = useFetch();
 
-  // Buscar fotos quando o componente é montado
+  //Buscar fotos quando o componente é montado
   React.useEffect(() => {
     async function fetchPhotos() {
       const { url, options } = PHOTOS_GET({ page: 1, total: 6, user });
-      const { response, json } = await request(url, options);
-      console.log(json);
-      console.log(response);
+      await request(url, options);
     }
     fetchPhotos();
   }, [request, user]);

@@ -1,9 +1,11 @@
 import React from 'react';
 import FeedPhoto from './FeedPhotos';
 import Modal from './Modal';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
-const Feed = ({user}) => {
+const Feed = ({ user }) => {
   const [modalPhoto, setModalPhoto] = React.useState(null);
+
   return (
     <div>
       {/* Exibir modal se modalPhoto não for nulo */}
