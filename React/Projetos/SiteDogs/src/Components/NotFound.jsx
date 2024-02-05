@@ -7,8 +7,9 @@ const NotFound = () => {
     <div className={`${styles.notFound} container`}>
       <h1 className="title">
         {' '}
-        <span></span>404 - Página não encontrada
+        <span></span>Error: 404
       </h1>
+      <p>Página não encontrada</p>
       <Link to="/">
         <Button name="Home"></Button>
       </Link>
