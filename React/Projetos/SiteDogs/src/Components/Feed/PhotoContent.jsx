@@ -5,7 +5,7 @@ import PhotoComment from './PhotoComment';
 import { UserContext } from '../../UserContext';
 import PhotoDelete from './PhotoDelete';
 
-//// Este componente renderiza o conteúdo da foto com modal e detalhes
+// Este componente renderiza o conteúdo da foto com modal e detalhes
 const PhotoContent = ({ handleModalClick, dados }) => {
   const { photo, comments } = dados;
   const { data } = React.useContext(UserContext);
@@ -40,7 +40,7 @@ const PhotoContent = ({ handleModalClick, dados }) => {
         <ul className={styles.modalDogInfos}>
           <li>| {photo.peso} kg</li>
           <li>
-            | {photo.idade === 1 ? `${photo.idade} ano` : `${photo.idade} anos`}
+            | {+photo.idade === 1 ? `${photo.idade} ano` : `${photo.idade} anos`}
           </li>
         </ul>
       </div>

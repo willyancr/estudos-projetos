@@ -32,14 +32,16 @@ const PhotoComment = ({ id, comments }) => {
       {/* Exibe comentários */}
       <ul ref={commentSection} className={styles.modalComments}>
         {commentsList.map((comment) => (
-          <li key={comment.comment_ID}>
-            <b>{comment.comment_author}:</b>
-            <span>{comment.comment_content}</span>
-          </li>
+          <>
+            <li key={comment.comment_ID}>
+              <b>{comment.comment_author}:</b>
+              <span>{comment.comment_content}</span>
+            </li>
+          </>
         ))}
       </ul>
 
-      {/* Formulário de input de comentário */}
+      {/* Exibe input de comentário */}
       {login ? (
         <form onClick={handleSubmit} className={styles.modalSendMsg}>
           <textarea
