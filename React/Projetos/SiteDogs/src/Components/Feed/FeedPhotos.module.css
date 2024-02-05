@@ -1,11 +1,11 @@
 .home{
-  /* margin-top: 6rem; */
   margin-bottom: 2rem;
 }
 .ulFeed{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+  justify-content: center;
 }
 .ulFeed img{
   border-radius: .3rem;
@@ -19,7 +19,7 @@
   cursor: pointer;
   position: relative;
 }
-.imageDogsFeed:nth-child(2){
+.ulFeed .imageDogsFeed:nth-child(6n+2){
   grid-column: 2 / 4;
   grid-row: span 2;
 }
@@ -34,4 +34,13 @@
   top: 50%;
   left: 50%;
   transition: opacity 0.2s ease;
+}
+@media(max-width: 40rem){
+  .ulFeed{
+    grid-template-columns: 1fr 1fr;
+  }
+  .ulFeed .imageDogsFeed:nth-child(4n+2){
+    grid-column: initial;
+    grid-row: initial;
+  }
 }

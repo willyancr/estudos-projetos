@@ -23,7 +23,7 @@ const Feed = ({ user }) => {
         if (json.length < total) setHasMore(false);
       }
     }
-    fetchPhotos()
+    fetchPhotos();
   }, [request, user, page]);
 
   const fetchMorePhotos = async () => {
@@ -46,6 +46,7 @@ const Feed = ({ user }) => {
             style={{
               textAlign: 'center',
               marginTop: '2rem',
+              marginBottom: '2rem',
               fontStyle: 'italic',
             }}
           >
@@ -54,14 +55,12 @@ const Feed = ({ user }) => {
           </p>
         }
       >
-        {page.map((item) => (
-          <FeedPhoto
-            key={item}
-            user={user}
-            photos={photos}
-            setModalPhoto={setModalPhoto}
-          />
-        ))}
+        <FeedPhoto
+          key={photos}
+          user={user}
+          photos={photos}
+          setModalPhoto={setModalPhoto}
+        />
       </InfiniteScroll>
     </div>
   );
