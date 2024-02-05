@@ -5,13 +5,14 @@ import { UserContext } from '../../UserContext';
 import useFetch from '../../Hooks/useFetch';
 import { Link } from 'react-router-dom';
 
+//Componente para exibição e adição de comentários a uma foto
 const PhotoComment = ({ id, comments }) => {
   const [comment, setComment] = React.useState(''); // Estado para os novos comentários
   const [commentsList, setCommentsList] = React.useState(() => comments); // Estado para a lista de comentários
-  const commentSection = React.useRef(null);
+  const commentSection = React.useRef(null); // Ref para a lista de comentários
   const { login } = React.useContext(UserContext);
 
-  const { error, request } = useFetch();
+  const { request } = useFetch();
 
   React.useEffect(() => {
     commentSection.current.scrollTop = commentSection.current.scrollHeight; // Rolagem automática da lista de comentários

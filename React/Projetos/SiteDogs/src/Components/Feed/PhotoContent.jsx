@@ -40,7 +40,8 @@ const PhotoContent = ({ handleModalClick, dados }) => {
         <ul className={styles.modalDogInfos}>
           <li>| {photo.peso} kg</li>
           <li>
-            | {+photo.idade === 1 ? `${photo.idade} ano` : `${photo.idade} anos`}
+            |{' '}
+            {+photo.idade === 1 ? `${photo.idade} ano` : `${photo.idade} anos`}
           </li>
         </ul>
       </div>

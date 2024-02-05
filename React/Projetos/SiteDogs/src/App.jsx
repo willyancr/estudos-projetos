@@ -13,6 +13,8 @@ import PostPhoto from './Components/Account/PostPhoto';
 import Modal from './Components/Feed/Modal';
 import { UserStorage } from './UserContext';
 import ProtectedRoute from './Helper/ProtectedRoute';
+import Photo from './Components/Feed/Photo';
+import NotFound from './Components/NotFound';
 
 const App = () => {
   return (
@@ -28,6 +30,8 @@ const App = () => {
           <Route path="/conta/estatisticas" element={<ProtectedRoute><Statistics /></ProtectedRoute>} />
           <Route path="/conta/postar" element={<ProtectedRoute><PostPhoto /></ProtectedRoute>} />
           <Route path="/modal" element={<Modal />} />
+          <Route path="/foto/:id" element={<Photo />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </UserStorage>

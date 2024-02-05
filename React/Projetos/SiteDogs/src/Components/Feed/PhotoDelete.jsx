@@ -3,6 +3,7 @@ import styles from './PhotoDelete.module.css';
 import useFetch from '../../Hooks/useFetch';
 import { PHOTO_DELETE } from '../../api';
 
+// Componente responsável por deletar uma imagem
 const PhotoDelete = ({ id }) => {
   const { request, loading } = useFetch();
 
@@ -11,7 +12,7 @@ const PhotoDelete = ({ id }) => {
     if (confirm) {
       const { url, options } = PHOTO_DELETE(id);
       const { response } = await request(url, options);
-      if (response.ok) window.location.reload();
+      if (response.ok) window.location.reload(); // Atualiza a página
     }
   }
   return (
