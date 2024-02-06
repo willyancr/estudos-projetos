@@ -5,10 +5,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import useFetch from '../../Hooks/useFetch';
+import { PASSWORD_LOST } from '../../api';
 
 const schema = yup
   .object({
-    email: yup.string().email('Email inválido').required('Digite seu email'),
+    email: yup.string().required('Digite seu email'),
   })
   .required();
 
@@ -19,8 +21,17 @@ const LostPassword = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  function onSubmit(event) {
-    console.log(event);
+  const [email, setEmail] = React.useState('');
+  const { error, loading, request, data } = useFetch();
+
+  async function onSubmit() {
+    if (email) {
+      const { url, options } = PASSWORD_LOST({
+        email,
+        url: 'http://localhost:5173/login/perdeu',
+      });
+      await request(url, options);
+    }
   }
   return (
     <section className="login">
@@ -31,17 +42,32 @@ const LostPassword = () => {
           className="responsiveImageLogin"
         />
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} className="loginForm efeito">
-        <h1 className='title'>
-          <span></span>Perdeu a senha?
-        </h1>
+      {data ? (
+        <p style={{ color: 'green' }}>{data}</p>
+      ) : (
+        <form onSubmit={handleSubmit(onSubmit)} className="loginForm efeito">
+          <h1 className="title">
+            <span></span>Perdeu a senha?
+          </h1>
 
-        <label htmlFor="email">Email </label>
-        <Input register={register} id="email" type="text" />
-        <p className="messageForm">{errors.email?.message}</p>
-
-        <Button name="Recuperar" type="submit" />
-      </form>
+          <label htmlFor="email">Email</label>
+          <Input
+            register={register}
+            id="email"
+            type="text"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <p className="messageForm">{errors.email?.message}</p>
+          {loading ? (
+            <Button name="Solicitando..." disabled />
+          ) : (
+            <Button name="Recuperar" type="submit" />
+          )}
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+        </form>
+      )}
     </section>
   );
 };

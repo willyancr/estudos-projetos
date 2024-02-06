@@ -113,4 +113,15 @@ export const COMMENT_POST = (id, body) => {
   };
 };
 
-
+export const PASSWORD_LOST = (body) => {
+  return {
+    url: `${url}/api/password/lost`,
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    },
+  };
+};

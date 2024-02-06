@@ -36,7 +36,6 @@ const Register = () => {
     const { url, options } = USER_POST({ username, email, password });
     const { response } = await request(url, options);
     if (response.ok) userLogin(username, password);
-    console.log(response);
   }
 
   return (
