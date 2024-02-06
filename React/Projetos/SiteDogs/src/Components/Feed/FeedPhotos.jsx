@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './FeedPhotos.module.css';
 import useFetch from '../../Hooks/useFetch';
-import { PHOTOS_GET } from '../../api';
 import FeedPhotoItem from './FeedPhotoItem';
-import Loading from '../../Helper/Loading';
 
 // Componente para exibir um feed de fotos
 const FeedPhoto = ({ setModalPhoto, photos }) => {
