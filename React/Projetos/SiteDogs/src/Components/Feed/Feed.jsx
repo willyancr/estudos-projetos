@@ -4,6 +4,7 @@ import Modal from './Modal';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useFetch from '../../Hooks/useFetch';
 import { PHOTOS_GET } from '../../api';
+import PropTypes from 'prop-types';
 
 // Componente para exibir o feed de fotos
 const Feed = ({ user }) => {
@@ -67,5 +68,14 @@ const Feed = ({ user }) => {
     </div>
   );
 };
-
+// Definir as propriedades do componente
+Feed.defaultProps = {
+  user: 0,
+};
+Feed.propTypes = {
+  user: PropTypes.oneOfType([
+    PropTypes.number.isRequired,
+    PropTypes.string.isRequired,
+  ]),
+};
 export default Feed;
