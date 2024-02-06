@@ -125,3 +125,15 @@ export const PASSWORD_LOST = (body) => {
     },
   };
 };
+
+export const STATS_GET = () => {
+  return {
+    url: `${url}/api/stats`,
+    options: {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer' + window.localStorage.getItem('token'),
+      },
+    },
+  };
+};
