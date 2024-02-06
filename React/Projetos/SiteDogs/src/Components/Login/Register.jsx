@@ -7,6 +7,7 @@ import Button from '../Button/Button';
 import { USER_POST } from '../../api';
 import { UserContext } from '../../UserContext';
 import useFetch from '../../Hooks/useFetch';
+import Head from '../../Helper/Head';
 
 const schema = yup
   .object({
@@ -40,6 +41,7 @@ const Register = () => {
 
   return (
     <section className="login">
+      <Head title="Cadastro" />
       <div>
         <img
           src="../image/dog_login.png"

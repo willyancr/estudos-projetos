@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { UserContext } from '../../UserContext';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import Head from '../../Helper/Head';
 
 const schema = yup
   .object({
@@ -36,6 +37,7 @@ const Login = () => {
 
   return (
     <section className="login">
+      <Head title="Login" />
       <div>
         <img
           src="../image/dog_login.png"

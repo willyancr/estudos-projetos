@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import PhotoContent from './PhotoContent';
 import useFetch from '../../Hooks/useFetch';
 import { PHOTO_GET } from '../../api';
+import Head from '../../Helper/Head';
 
 const Photo = () => {
   const { id } = useParams();
@@ -17,6 +18,7 @@ const Photo = () => {
   if (data)
     return (
       <section className={styles.photo}>
+        <Head title={data.id} />
         <PhotoContent dados={data} />
       </section>
     );

@@ -7,6 +7,7 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import useFetch from '../../Hooks/useFetch';
 import { PASSWORD_LOST } from '../../api';
+import Head from '../../Helper/Head';
 
 const schema = yup
   .object({
@@ -35,6 +36,7 @@ const LostPassword = () => {
   }
   return (
     <section className="login">
+      <Head title="Perdeu a senha?" />
       <div>
         <img
           src="../image/dog_login.png"

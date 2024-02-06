@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import useFetch from '../../Hooks/useFetch';
 import { PHOTO_POST } from '../../api';
 import { useNavigate } from 'react-router-dom';
+import Head from '../../Helper/Head';
 
 const schema = yup
   .object({
@@ -64,6 +65,7 @@ const PostPhoto = () => {
 
   return (
     <>
+      <Head title="Poste sua foto" />
       <HeaderDashboard title="Poste sua foto" />
       <section className={`${styles.main} container dashboardMain efeito`}>
         <form className={styles.mainForm} onSubmit={handleSubmit(handlePost)}>
