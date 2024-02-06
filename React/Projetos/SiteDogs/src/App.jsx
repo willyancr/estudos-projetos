@@ -19,25 +19,29 @@ import UserPerfil from './Components/Feed/UserPerfil';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <UserStorage>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/login/perdeu" element={<LostPassword />} />
-          <Route path="/login/cadastrar" element={<Register />} />
-          <Route path="/conta" element={<ProtectedRoute><HomeDashboard /></ProtectedRoute>} />
-          <Route path="/conta/estatisticas" element={<ProtectedRoute><Statistics /></ProtectedRoute>} />
-          <Route path="/conta/postar" element={<ProtectedRoute><PostPhoto /></ProtectedRoute>} />
-          <Route path="/modal" element={<Modal />} />
-          <Route path="/foto/:id" element={<Photo />} />
-          <Route path="/perfil/:user" element={<UserPerfil />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
-      </UserStorage>
-    </BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+        <UserStorage>
+          <div className="AppBody">
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/login/perdeu" element={<LostPassword />} />
+              <Route path="/login/cadastrar" element={<Register />} />
+              <Route path="/conta" element={<ProtectedRoute><HomeDashboard /></ProtectedRoute>} />
+              <Route path="/conta/estatisticas" element={<ProtectedRoute><Statistics /></ProtectedRoute>} />
+              <Route path="/conta/postar" element={<ProtectedRoute><PostPhoto /></ProtectedRoute>} />
+              <Route path="/modal" element={<Modal />} />
+              <Route path="/foto/:id" element={<Photo />} />
+              <Route path="/perfil/:user" element={<UserPerfil />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+            <Footer />
+        </UserStorage>
+      </BrowserRouter>
+    </div>
   );
 };
 

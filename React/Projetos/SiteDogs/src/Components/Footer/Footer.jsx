@@ -3,7 +3,7 @@ import styles from './Footer.module.css';
 
 const Footer = () => {
   return (
-    <div className={styles.footer}>
+    <footer className={styles.footer}>
       <span>
         <i className="fa-solid fa-dog fa-2xl"></i>
       </span>
@@ -18,7 +18,7 @@ const Footer = () => {
           WillyanCosta
         </a>
       </p>
-    </div>
+    </footer>
   );
 };
 
