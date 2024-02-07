@@ -18,6 +18,7 @@ const useFetch = () => {
       if (response.ok === false) throw new Error(json.message); // Lança um erro se a resposta não estiver OK
       setData(json); // Atualiza o estado de dados com os dados recebidos
       setLoading(false);
+      console.log(json, response);
     } catch (err) {
       json = null;
       setError(err.message);

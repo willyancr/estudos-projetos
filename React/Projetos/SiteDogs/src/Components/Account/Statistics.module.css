@@ -25,3 +25,9 @@
   height: 400px;
   padding: 2rem;
 }
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
