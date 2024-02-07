@@ -30,17 +30,7 @@ const StatisticsGraph = ({ data }) => {
             innerRadius={100}
           />
         </div>
-        <div className={styles.graph}>
-          <VictoryChart>
-            <VictoryArea
-              data={graph}
-              animate={{
-                duration: 2000,
-                onLoad: { duration: 1000 },
-              }}
-            />
-          </VictoryChart>
-        </div>
+        
         <div className={styles.graph}>
           <VictoryChart domainPadding={{ x: 15 }}>
             <VictoryBar
@@ -48,8 +38,8 @@ const StatisticsGraph = ({ data }) => {
               style={{ data: { fill: '#c43a31' } }}
               alignment="start"
               animate={{
-                duration: 2000,
-                onLoad: { duration: 1000 },
+                duration: 500,
+                onLoad: { duration: 500 },
               }}
               barRatio={0.6}
             />

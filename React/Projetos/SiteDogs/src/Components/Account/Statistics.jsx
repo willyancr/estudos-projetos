@@ -6,7 +6,7 @@ import Head from '../../Helper/Head';
 import useFetch from '../../Hooks/useFetch';
 import { STATS_GET } from '../../api';
 import Loading from '../../Helper/Loading';
-const StatisticsGraph = React.lazy(() => import('./StatisticsGraph')); 
+const StatisticsGraph = React.lazy(() => import('./StatisticsGraph')); //Carregar componente dinamicamente quando necessario
 
 const Statistics = () => {
   const { request, loading, error, data } = useFetch();
@@ -21,9 +21,7 @@ const Statistics = () => {
 
   if (loading)
     return (
-      <p className={styles.loading}>
-        <Loading />
-      </p>
+      <p className={styles.loading}><Loading /></p>
     );
   if (error) return <p>{error}</p>;
   if (data)
@@ -31,7 +29,7 @@ const Statistics = () => {
       <React.Suspense fallback={<div></div>}>
         <Head title="Estatisticas" />
         <HeaderDashboard title="Estatisticas" />
-        <StatisticsGraph data={data} />
+        <StatisticsGraph data={data} /> 
       </React.Suspense>
     );
   else {

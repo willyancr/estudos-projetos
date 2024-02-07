@@ -24,3 +24,8 @@
   height: 0px;
   padding-bottom: 100%;
 }
+@media screen and (max-width: 40rem) {
+  .main{
+    grid-template-columns: 1fr;
+  }
+}
