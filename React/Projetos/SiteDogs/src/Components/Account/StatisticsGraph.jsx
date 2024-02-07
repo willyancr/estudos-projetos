@@ -1,12 +1,6 @@
 import React from 'react';
 import styles from './StatisticsGraph.module.css';
-import {
-  VictoryPie,
-  VictoryBar,
-  VictoryChart,
-  VictoryArea,
-  VictoryBoxPlot,
-} from 'victory';
+import { VictoryPie, VictoryBar, VictoryChart, VictoryArea } from 'victory';
 
 const StatisticsGraph = ({ data }) => {
   const [total, setTotal] = React.useState(0);
@@ -38,7 +32,13 @@ const StatisticsGraph = ({ data }) => {
         </div>
         <div className={styles.graph}>
           <VictoryChart>
-            <VictoryArea data={graph} />
+            <VictoryArea
+              data={graph}
+              animate={{
+                duration: 2000,
+                onLoad: { duration: 1000 },
+              }}
+            />
           </VictoryChart>
         </div>
         <div className={styles.graph}>
