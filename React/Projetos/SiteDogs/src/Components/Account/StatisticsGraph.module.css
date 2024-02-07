@@ -20,3 +20,9 @@
   height: 400px;
   padding: 2rem;
 }
+
+@media screen and (max-width: 40rem) {
+  .graphContainer{
+    grid-template-columns: 1fr;
+  }
+}
