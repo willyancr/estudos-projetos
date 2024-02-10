@@ -11,3 +11,4 @@
     }
     }
   4 - tsc -w (atualiza o arquivo a cada alteração)
+
