@@ -1,38 +1,34 @@
-interface Curso {
-  nome: string;
-  horas: number;
-  aulas: number;
-  gratuito: boolean;
-  tags: string;
-  idAulas: number;
-  nivel: string;
-}
-
 async function fetchCursos() {
   const response = await fetch('https://api.origamid.dev/json/cursos.json');
   const data = await response.json();
   console.log(data);
   mostrarCursos(data);
 }
-
-function mostrarCursos(data: Curso) {
-  if (data.nivel === 'iniciante') {
-    document.body.innerHTML = `
-      <h2>Nome: ${data.nome}</h2>
-      <p>Gratuito: ${data.gratuito || 'Não'}</p>
-      <p>Aulas: ${data.aulas}</p>
-      <p>Nivel: ${data.nivel}</p>
-      <p>Azul</p>
+interface Curso {
+  nome: string;
+  horas: number;
+  aulas: number;
+  gratuito: boolean;
+  tags: string[];
+  idAulas: number[];
+  nivel: 'iniciante' | 'avancado';
+}
+function mostrarCursos(data: Curso[]) {
+  data.forEach((curso) => {
+    const colorStyle =
+      curso.nivel === 'iniciante' ? 'color: blue' : 'color: red';
+    document.body.innerHTML += `
+      <div>
+        <h2 style="${colorStyle}">${curso.nome}</h2>
+        <p>Horas: ${curso.horas}</p>
+        <p>Aulas: ${curso.aulas}</p>
+        <p>Gratuito: ${curso.gratuito === true ? 'Sim' : 'Não'}</p>
+        <p>Tags: ${curso.tags.join(', ')}</p>
+        <p>IAulas: ${curso.idAulas.join(', ')}</p>
+        <p> Nivel: ${curso.nivel}</p>
+      </div>
     `;
-  } else {
-    document.body.innerHTML = `
-      <h2>Nome: ${data.nome}</h2>
-      <p>Gratuito: ${data.gratuito || 'Não'}</p>
-      <p>Aulas: ${data.aulas}</p>
-      <p>Nivel: ${data.nivel}</p>
-      <p>Vermelho</p>
-    `;
-  }
+  });
 }
 
 fetchCursos();
