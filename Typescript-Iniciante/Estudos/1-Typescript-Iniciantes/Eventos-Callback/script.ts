@@ -1,7 +1,7 @@
 const btnMobile = document.getElementById('btn-mobile');
 const nav = document.getElementById('nav');
 
-btnMobile?.addEventListener('click', toggleMenu);
+btnMobile?.addEventListener('pointerdown', toggleMenu);
 
 function toggleMenu() {
   if (nav) {
