@@ -1,7 +1,6 @@
 function retorno<T>(param: T): T {
   return param;
 }
-
 const numero = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const frutas = ['banana', 'maca', 'laranja', 'abacaxi', 'abacate'];
 function mostrar<T>(param: T[]) {
