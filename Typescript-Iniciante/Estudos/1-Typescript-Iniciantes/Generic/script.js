@@ -1,7 +1,5 @@
 "use strict";
-function retorno(param) {
-    return param;
-}
+//exemplo
 const numero = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const frutas = ['banana', 'maca', 'laranja', 'abacaxi', 'abacate'];
 function mostrar(param) {
@@ -9,6 +7,7 @@ function mostrar(param) {
 }
 console.log(mostrar(numero));
 console.log(mostrar(frutas));
+//exemplo
 function tipoDado(param) {
     const resultados = {
         dado: param,
@@ -17,6 +16,7 @@ function tipoDado(param) {
     return resultados;
 }
 console.log(tipoDado(true));
+//exemplo
 function extrairTexto(elemento) {
     return {
         texto: elemento.innerText,
@@ -26,6 +26,7 @@ function extrairTexto(elemento) {
 const a = document.querySelector('a');
 if (a)
     console.log(extrairTexto(a).elemento.href);
+//exemplo
 async function getFecth(url) {
     const response = await fetch(url);
     return await response.json();
@@ -35,3 +36,9 @@ async function handleData() {
     console.log(curso);
 }
 handleData();
+const aluno = {
+    nome: 'Willyan',
+    sobrenome: 'Santos',
+    idade: 20,
+};
+console.log(aluno);
