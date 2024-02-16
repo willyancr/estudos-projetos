@@ -20,4 +20,10 @@ function toNumber(input) {
 }
 console.log(toNumber('222'));
 console.log(toNumber(222));
-//exemplo
+function arredondar(input) {
+    if (typeof input === 'number') {
+        return Math.ceil(input);
+    }
+    return Math.ceil(+input).toString();
+}
+console.log(arredondar('32.6'));

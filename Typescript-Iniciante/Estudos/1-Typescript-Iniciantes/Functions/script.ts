@@ -25,4 +25,13 @@ function toNumber(input: number | string) {
 console.log(toNumber('222'));
 console.log(toNumber(222));
 
-//exemplo
+//exercício: arredondar um número
+function arredondar(input: number): number;
+function arredondar(input: string): string;
+function arredondar(input: number | string): number | string {
+  if (typeof input === 'number') {
+    return Math.ceil(input);
+  }
+  return Math.ceil(+input).toString();
+}
+console.log(arredondar('32.6'));
