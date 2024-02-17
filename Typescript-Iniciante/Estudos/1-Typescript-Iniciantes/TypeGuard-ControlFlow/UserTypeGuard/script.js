@@ -33,7 +33,7 @@ function handleCurso(data) {
             document.body.innerHTML += `
         <h2>Nome: ${item.nome}</h2>
         <p>Horas: ${item.horas}</p>
-        <p>Tags: ${item.tags}</p>
+        <p>Tags: ${item.tags.join(', ')}</p>
       `;
         });
     }
