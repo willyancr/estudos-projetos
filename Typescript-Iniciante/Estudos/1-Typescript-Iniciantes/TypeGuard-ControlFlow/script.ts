@@ -18,7 +18,6 @@ function displayCarInfo(vehicle: Car) {
 }
 
 //exemplo
-
 function fetchProdutos() {
   fetch('https://api.origamid.dev/json/notebook.json')
     .then((response) => response.json())
