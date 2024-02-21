@@ -1,0 +1,53 @@
+// 1 - Crie uma interface UserData para o formulário abaixo
+// 2 - Crie uma variável global UserData no window, ela será um objeto qualquer
+// 3 - Adicione um evento de keyup ao formulário
+// 4 - Quando o evento ocorrer adicione a {[id]: value} ao UserData
+// 5 - Salve UserData no localStorage
+// 6 - Crie uma User Type Guard, para verificar se o valor de localStorage é
+//compativel com UserData
+// 7 - Ao refresh da pagina, preencha os valores de localStorage (caso seja
+//UserData) no formulário e em window. UserData
+
+interface UserData {
+  [key: string]: string;
+  nome: string;
+  email: string;
+  cpf: string;
+}
+
+interface Window {
+  UserData: UserData;
+}
+window.UserData = window.UserData || {};
+
+const form = document.querySelector('form') as HTMLFormElement;
+
+form.addEventListener('keyup', handleForm);
+
+function isUserData(value: unknown): value is UserData {
+  return true;
+}
+function handleForm(event: KeyboardEvent) {
+  const target = event.target as HTMLInputElement;
+  const id = target.id;
+  const value = target.value;
+  window.UserData[id] = value; // Define o valor do elemento de input no objeto UserData
+  if (isUserData(window.UserData)) {
+    localStorage.setItem('UserData', JSON.stringify(window.UserData)); // Armazena o objeto UserData no armazenamento local
+    console.log(window.UserData);
+  }
+}
+
+window.addEventListener('load', refresh);
+
+function refresh() {
+  const savedUserData = localStorage.getItem('UserData'); // Obtém os dados salvos do localStorage
+  if (savedUserData) {
+    window.UserData = JSON.parse(savedUserData); // Converte os dados salvos em formato JSON para o objeto window.UserData
+    // Itera sobre as entradas do objeto window.UserData
+    Object.entries(window.UserData).forEach(([key, value]) => {
+      const input = document.getElementById(key) as HTMLInputElement;
+      input.value = value;
+    });
+  }
+}
