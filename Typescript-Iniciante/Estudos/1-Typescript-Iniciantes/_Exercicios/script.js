@@ -8,17 +8,19 @@
 //compativel com UserData
 // 7 - Ao refresh da pagina, preencha os valores de localStorage (caso seja
 //UserData) no formulário e em window. UserData
-window.UserData = window.UserData || {};
-const form = document.querySelector('form');
-form.addEventListener('keyup', handleForm);
+window.UserData = window.UserData || {}; // Cria o objeto UserData no window, caso não exista um objeto UserData no window criado anteriormente 
+//função para verificar se é string
 function isUserData(value) {
     return true;
 }
+const form = document.querySelector('form');
+form.addEventListener('keyup', handleForm);
 function handleForm(event) {
     const target = event.target;
     const id = target.id;
     const value = target.value;
     window.UserData[id] = value; // Define o valor do elemento de input no objeto UserData
+    // Verifica se o objeto UserData é válido
     if (isUserData(window.UserData)) {
         localStorage.setItem('UserData', JSON.stringify(window.UserData)); // Armazena o objeto UserData no armazenamento local
         console.log(window.UserData);
