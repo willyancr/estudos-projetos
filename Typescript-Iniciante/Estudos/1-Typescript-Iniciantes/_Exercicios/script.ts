@@ -18,11 +18,19 @@ interface UserData {
 interface Window {
   UserData: UserData;
 }
-window.UserData = window.UserData || {}; // Cria o objeto UserData no window, caso não exista um objeto UserData no window criado anteriormente 
+window.UserData = window.UserData || {}; // Cria o objeto UserData no window, caso não exista um objeto UserData no window criado anteriormente
 
-//função para verificar se é string
+//type guard
 function isUserData(value: unknown): value is UserData {
-  return true;
+  if (
+    value &&
+    value instanceof Object &&
+    ('nome' in value || 'email' in value || 'cpf' in value)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 }
 const form = document.querySelector('form') as HTMLFormElement;
 
@@ -40,16 +48,28 @@ function handleForm(event: KeyboardEvent) {
   }
 }
 
-window.addEventListener('load', refresh);
+window.addEventListener('load', loadDados);
 
-function refresh() {
+function valideJSON() {
+  try {
+    JSON.parse(localStorage.getItem('UserData') as string);
+  } catch (e) {
+    return false;
+  }
+  return true;
+}
+
+function loadDados() {
   const savedUserData = localStorage.getItem('UserData'); // Obtém os dados salvos do localStorage
-  if (savedUserData) {
+  if (savedUserData && valideJSON()) {
     window.UserData = JSON.parse(savedUserData); // Converte os dados salvos em formato JSON para o objeto window.UserData
-    // Itera sobre as entradas do objeto window.UserData
-    Object.entries(window.UserData).forEach(([key, value]) => {
-      const input = document.getElementById(key) as HTMLInputElement;
-      input.value = value;
-    });
+    if (isUserData(window.UserData)) {
+      // Itera sobre as entradas do objeto window.UserData
+      Object.entries(window.UserData).forEach(([key, value]) => {
+        const input = document.getElementById(key) as HTMLInputElement;
+        input.value = value;
+        // window.UserData[key] = value;
+      });
+    }
   }
 }
