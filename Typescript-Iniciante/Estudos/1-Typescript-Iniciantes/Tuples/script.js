@@ -1,29 +1,16 @@
 "use strict";
-//OVERLOAD
-function add(a, b) {
-    if (typeof a === 'number' && typeof b === 'number') {
-        return a + b;
-    }
-    return a.toString() + b.toString();
+let x;
+x = ['hello', 10]; // OK
+// x = [10, "hello"]; // Erro
+//exercício
+async function fetchVendas() {
+    const response = await fetch('https://api.origamid.dev/json/vendas.json');
+    const data = await response.json();
+    someVendas(data);
+    console.log(data);
 }
-//exemplo
-function toNumber(input) {
-    if (typeof input === 'number') {
-        return input;
-    }
-    if (typeof input === 'string') {
-        const number = +input;
-        if (!isNaN(number))
-            return number;
-    }
-    throw 'O valor fornecido não pode ser convertido para um número';
+fetchVendas();
+function someVendas(data) {
+    const totalVendas = data.reduce((total, item) => total + item[1], 0);
+    document.body.innerHTML = `Total de vendas: R$: ${totalVendas}`;
 }
-console.log(toNumber('222'));
-console.log(toNumber(222));
-function arredondar(input) {
-    if (typeof input === 'number') {
-        return Math.ceil(input);
-    }
-    return Math.ceil(+input).toString();
-}
-console.log(arredondar('32.6'));
