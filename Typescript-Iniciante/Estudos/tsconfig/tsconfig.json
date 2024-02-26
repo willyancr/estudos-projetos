@@ -1,9 +1,10 @@
 {
-  "compileOnSave": true, //compila ao salvar
   "compilerOptions": {
     "target": "ESNext", //Especifica a versão do ECMAScript de destino
     "strict": true, //Habilita todas as opções estritas de tipo.
     "outDir": "dist", //Diretorio de saida
-    "sourceMap": true //Gera mapas de origem correspondentes para os arquivos JavaScript compilados.
+    "sourceMap": true, //Gera mapas de origem correspondentes para os arquivos JavaScript compilados.
+    "allowJs": true, //Permite arquivos JavaScript
+    "removeComments": true //Remove comentaários nos arquivos js
   }
 }
