@@ -5,6 +5,7 @@
     "outDir": "dist", //Diretorio de saida
     "sourceMap": true, //Gera mapas de origem correspondentes para os arquivos JavaScript compilados.
     "allowJs": true, //Permite arquivos JavaScript
-    "removeComments": true //Remove comentaários nos arquivos js
+    "removeComments": true, //Remove comentaários nos arquivos js
+    "isolatedModules": true
   }
 }
