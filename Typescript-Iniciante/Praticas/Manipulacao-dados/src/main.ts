@@ -16,7 +16,7 @@ interface Transacao {
 }
 
 function mostrarTransacoes(transacoes: Transacao[]) {
-  const tabela = document.querySelector('#tabela tbody');
+  const tabela = document.querySelector('#tabela tbody') as HTMLTableElement;
   transacoes.forEach((transacao) => {
     const transacaoHTML = `
       <tr>
@@ -27,6 +27,6 @@ function mostrarTransacoes(transacoes: Transacao[]) {
         <td>${transacao.Status}</td>
       </tr>
     `;
-    if (tabela) tabela.innerHTML += transacaoHTML;
+    tabela.innerHTML += transacaoHTML;
   });
 }
