@@ -4,4 +4,5 @@ export interface Transacao {
   'Valor (R$)': string;
   'Forma de Pagamento': string;
   Status: string;
+  Data: String;
 }
