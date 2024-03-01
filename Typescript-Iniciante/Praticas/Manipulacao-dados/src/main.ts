@@ -1,12 +1,14 @@
 import './style.css';
 import { Transacao } from './interface-transacoes';
 import { totalCompras } from './total-compras';
+import { meioDePagamento } from './total-pagementos';
 
 async function fetchTransacoes() {
   const response = await fetch('https://api.origamid.dev/json/transacoes.json');
   const data = await response.json();
   mostrarTransacoes(data);
   totalCompras(data);
+  meioDePagamento(data);
 }
 fetchTransacoes();
 
