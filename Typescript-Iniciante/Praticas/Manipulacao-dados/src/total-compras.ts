@@ -13,8 +13,8 @@ export function totalCompras(transacoes: Transacao[]) {
   const totalElement = document.querySelector(
     '#total-compras',
   ) as HTMLSpanElement;
-  totalElement.textContent = `${total.toLocaleString('pt-BR', {
+  totalElement.textContent = total.toLocaleString('pt-BR', {
     style: 'currency',
     currency: 'BRL',
-  })}`;
+  });
 }

@@ -1,4 +1,4 @@
-import { Transacao } from "./interface-transacoes";
+import { Transacao } from './interface-transacoes';
 
 export function diaComMaisVenda(transacoes: Transacao[]) {
   let contagemDias: { [key: string]: number } = {};
@@ -15,7 +15,7 @@ export function diaComMaisVenda(transacoes: Transacao[]) {
     const diaMaisVendido = Object.keys(contagemDias).reduce((a, b) => {
       return contagemDias[a] > contagemDias[b] ? a : b;
     }, '');
-
+    
     const totalElement = document.querySelector(
       '#dia-com-mais-vendas',
     ) as HTMLSpanElement;
