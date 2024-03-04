@@ -1,25 +1,23 @@
 import { Transacao } from './interface-transacoes';
 
+interface Status {
+  [key: string]: number;
+}
+
 export function statusPagamento(transacoes: Transacao[]) {
-  let totalPaga = 0;
-  let totalRecusada = 0;
-  let totalAguardando = 0;
-  let totalEstornada = 0;
-  transacoes.forEach((transacao) => {
-    if (transacao.Status === 'Paga') {
-      totalPaga++;
-    } else if (transacao.Status === 'Recusada pela operadora de cartão') {
-      totalRecusada++;
-    } else if (transacao.Status === 'Aguardando pagamento') {
-      totalAguardando++;
+  const pagamentos = transacoes.map((transacao) => transacao.Status);
+  const total = pagamentos.reduce((acc: Status, item) => {
+    if (acc[item]) {
+      acc[item] += 1;
     } else {
-      totalEstornada++;
+      acc[item] = 1;
     }
-    updateElemet('paga', totalPaga);
-    updateElemet('recusada', totalRecusada);
-    updateElemet('aguardando', totalAguardando);
-    updateElemet('estornada', totalEstornada);
-  });
+    return acc;
+  }, {});
+  updateElemet('paga', total.Paga);
+  updateElemet('recusada', total['Recusada pela operadora de cartão']);
+  updateElemet('aguardando', total['Aguardando pagamento']);
+  updateElemet('estornada', total.Estornada);
 }
 
 function updateElemet(id: string, total: number) {

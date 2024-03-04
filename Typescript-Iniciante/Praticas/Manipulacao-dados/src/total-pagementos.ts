@@ -1,21 +1,28 @@
 import { Transacao } from './interface-transacoes';
 
+interface Pagamento {
+  [key: string]: number;
+}
 export function meioDePagamento(transacoes: Transacao[]) {
-  let totalCartao = 0;
-  let totalBoleto = 0;
-  transacoes.forEach((transacao) => {
-    if (transacao['Forma de Pagamento'] === 'Cartão de Crédito') {
-      totalCartao = (totalCartao || 0) + 1;
-      const totalElementCartao = document.querySelector(
-        '#cartao-credito',
-      ) as HTMLSpanElement;
-      totalElementCartao.textContent = `${totalCartao}`;
+  const pagamentos = transacoes.map(
+    (transacao) => transacao['Forma de Pagamento'],
+  );
+  const total = pagamentos.reduce((acc: Pagamento, item) => {
+    if (acc[item]) {
+      acc[item] += 1;
     } else {
-      totalBoleto = (totalBoleto || 0) + 1;
-      const totalElementBoleto = document.querySelector(
-        '#boleto',
-      ) as HTMLSpanElement;
-      totalElementBoleto.textContent = `${totalBoleto}`;
+      acc[item] = 1;
     }
-  });
+    return acc;
+  }, {});
+
+  const totalElementCartao = document.querySelector(
+    '#cartao-credito',
+  ) as HTMLSpanElement;
+  const totalElementBoleto = document.querySelector(
+    '#boleto',
+  ) as HTMLSpanElement;
+  
+  totalElementCartao.textContent = `${total['Cartão de Crédito']}`;
+  totalElementBoleto.textContent = `${total.Boleto}`;
 }
