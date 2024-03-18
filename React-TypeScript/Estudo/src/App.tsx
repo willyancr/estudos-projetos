@@ -1,31 +1,45 @@
 import * as React from 'react';
-import Button from './Button';
 import Input from './Input';
 
-function App() {
-  const [total, setTotal] = React.useState(0);
+type Venda = {
+  id: string;
+  nome: string;
+  preco: number;
+  status: string;
+};
 
-  function handleClick() {
-    setTotal(total + 1);
-  }
+function App() {
+  const [inicio, setInicio] = React.useState('');
+  const [final, setFinal] = React.useState('');
+  const [date, seteDate] = React.useState<null | Venda[]>(null);
+
+  React.useEffect(() => {
+    if (inicio && final) {
+      fetch(`https://data.origamid.dev/vendas/?inicio=${inicio}&final=${final}`)
+        .then((res) => res.json())
+        .then((json) => seteDate(json));
+    }
+  }, [inicio, final]);
+
   return (
     <>
       <div>
-        <p>Total:{total}</p>
-        <Button onClick={handleClick} tamanho="2rem">
-          Somar
-        </Button>
+        <Input type="date" value={inicio} setState={setInicio}>
+          {' '}
+          Início:{' '}
+        </Input>
+        <Input type="date" value={final} setState={setFinal}>
+          {' '}
+          final:{' '}
+        </Input>
       </div>
       <div>
-        <Input
-          type="password"
-          htmlFor="password"
-          name="password"
-          id="password"
-          style={{ marginTop: '1rem' }}
-        >
-          Digite sua senha:
-        </Input>
+        {date &&
+          date.map((venda) => (
+            <p key={venda.id}>
+              {venda.nome}: {venda.status}
+            </p>
+          ))}
       </div>
     </>
   );
