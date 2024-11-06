@@ -1,97 +1,119 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Playfair+Display+SC&family=Poppins:wght@300;400&display=swap');
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-:root{
+
+:root {
     font-size: 62.5%;
 }
-body{
+
+body {
     font-size: 1.6rem;
-    background: rgb(110,212,152);
-    background: linear-gradient(138deg, rgba(110,212,152,1) 19%, rgba(0,223,192,1) 78%);
+    background: rgb(110, 212, 152);
+    background: linear-gradient(138deg, rgba(110, 212, 152, 1) 19%, rgba(0, 223, 192, 1) 78%);
     height: 100vh;
 }
-.img-illustration{
-    width: 45rem;
+
+.img-illustration {
+    width: 100%;
+    max-width: 45rem;
     margin-left: 5rem;
-}   
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10rem;
-    margin-top: 10rem;
 }
-.form{
-    font-family: 'Poppins', sans-serif;;
+
+.container {
     display: flex;
     flex-direction: column;
-    width: 40rem;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    margin-top: 5rem;
+    padding: 0 2rem;
+}
+
+.form {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 40rem;
     background: white;
     border-radius: 2rem;
-    box-shadow: 2px 2px 6px 1px rgba(0,0,0,.3);
+    box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, .3);
     padding: 3rem;
 }
-.form h1{
+
+.form h1 {
     text-align: center;
     margin-bottom: 2rem;
 }
-.tamanho{
+
+.tamanho {
     display: flex;
     justify-content: space-between;
     margin-bottom: .5rem;
 }
-.tamanho span{
+
+.tamanho span {
     color: rgb(116, 116, 116);
     font-size: 1.4rem;
 }
-.tamanho input{
-    width: 7rem;
+
+.tamanho input {
+    width: 100%;
+    max-width: 7rem;
     border-radius: .6rem;
     border: 1px solid rgba(0, 0, 0, 0.226);
     padding: .5rem 0 .5rem 1rem;
 }
-.range{
+
+.range {
     width: 100%;
     margin-bottom: 1.5rem;
 }
-.check{
+
+.check {
     position: relative;
     margin-bottom: .8rem;
 }
-.check span{
+
+.check span {
     color: rgb(116, 116, 116);
     font-size: 1.4rem;
 }
-.check label{
+
+.check label {
     display: flex;
     align-items: center;
     gap: 5px;
 }
-.check label::before{
+
+.check label::before {
     content: '';
     width: 15px;
     height: 15px;
     border: 1px solid rgba(0, 0, 0, 0.445);
     border-radius: .3rem;
 }
-.check input{
+
+.check input {
     position: absolute;
     width: 15px;
     height: 15px;
     opacity: 0;
 }
-.check input:checked + label::before{ /*Quando clicar aparecer o icone*/
+
+.check input:checked + label::before {
     background-image: url("https://icons.iconarchive.com/icons/github/octicons/256/check-16-icon.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #6ED498;
     border: 1px solid #6ED498;
 }
-.btn{
+
+.btn {
     width: 100%;
     padding: 1rem 0;
     font-size: 2rem;
@@ -104,10 +126,12 @@ body{
     margin-top: 1.2rem;
     margin-bottom: 1rem;
 }
-.btn:hover{
+
+.btn:hover {
     background: #6ED498;
 }
-.senha-gerada{
+
+.senha-gerada {
     display: none;
     width: 100%;
     background-color: rgba(192, 190, 190, 0.432);
@@ -117,6 +141,16 @@ body{
     font-size: 1.6rem;
     cursor: pointer;
 }
-.ativo{
+
+.ativo {
     display: block;
 }
+
+@media screen and (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        gap: 10rem;
+        margin-top: 10rem;
+    }
+}
+
